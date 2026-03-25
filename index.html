@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admiral's Landing - Home</title>
+    <meta name="referrer" content="no-referrer" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* --- AESTHETIC CSS UPDATES --- */
+      body {
+        font-family: "EB Garamond", sans-serif;
+        padding: 20px;
+        background-color: #fcfaf5; 
+        color: #432818; 
+        font-size: 18px; 
+        margin: 0;
+      }
+
+      /* Header / Navbar */
+      .navbar {
+        background: linear-gradient(to right, #82ABA1, #454372); 
+        color: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      }
+      .navbar .logo {
+        font-family: "Dancing Script", cursive;
+        font-size: 36px; 
+        color: #FFE6A7;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      }
+      .navbar .logo a {
+        color: #FFE6A7;
+        text-decoration: none;
+      }
+      .navbar nav a {
+        color: #FFE6A7;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+        transition: 0.2s;
+        font-size: 18px;
+      }
+      .navbar nav a:hover {
+        color: white; 
+      }
+
+      /* Hero Section (With Background Image) */
+      .hero-bg {
+        background: linear-gradient(rgba(213, 212, 229, 0.6), rgba(130, 171, 161, 0.6)), url("Farragut-Town-Hall-tn1.jpg");
+        background-size: cover;
+        background-position: center;
+        padding: 40px 20px;
+        border-radius: 12px;
+        text-align: center;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+
+      /* Light Cream Content Boxes inside Hero */
+      .content-box {
+        background-color: #fdfaf0; /* Light cream color */
+        color: #432818;
+        padding: 25px; 
+        border-radius: 15px;
+        max-width: 800px;
+        margin: 0 auto 20px auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      }
+      .content-box h1 {
+        margin-top: 0;
+        font-size: 32px; 
+        color: #454372;
+      }
+      .content-box h2 {
+        margin-top: 0;
+        font-size: 26px; 
+        color: #454372;
+      }
+
+      .hero-buttons {
+        margin-top: 15px;
+      }
+      .hero-buttons a {
+        display: inline-block;
+        background-color: #454372;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+      .hero-buttons a:hover {
+        background-color: #82ABA1;
+        color: #454372;
+      }
+
+      /* Layout Grid for Main Content */
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto 40px auto;
+      }
+      @media (max-width: 850px) {
+        .content-grid {
+          grid-template-columns: 1fr; 
+        }
+      }
+
+      /* Section Titles */
+      .section-title {
+        color: #454372;
+        font-size: 26px;
+        border-bottom: 2px solid #82ABA1;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+      }
+
+      /* Cards (Spotlight Events - Thinner Profile) */
+      .spotlight-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; 
+      }
+      .card {
+        display: block; 
+        text-decoration: none; 
+        background: white;
+        padding: 12px 15px; 
+        border-radius: 10px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        border-left: 5px solid #82ABA1; 
+        color: #432818;
+        transition: 0.3s;
+      }
+      .card:hover {
+        transform: translateX(4px); 
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        border-left: 5px solid #454372;
+      }
+      .card h3 {
+        margin: 0 0 5px 0;
+        color: #454372;
+        font-size: 20px; 
+      }
+      .card p { 
+        margin: 3px 0; 
+        font-size: 16px; 
+      }
+      .event-date {
+        font-weight: bold;
+        color: #82ABA1;
+        font-size: 14px;
+      }
+
+      /* Right Column Elements - Image Frame */
+      .image-frame {
+        background: white;
+        padding: 12px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-bottom: 5px solid #82ABA1;
+        margin-bottom: 25px;
+      }
+      .farragut-img {
+        width: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Mini Cards for Dining and Attractions */
+      .mini-cards-container {
+        display: flex;
+        gap: 12px;
+        margin-top: 15px;
+      }
+      .mini-card {
+        background: white;
+        flex: 1;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        text-align: center;
+        text-decoration: none;
+        padding-bottom: 8px;
+        transition: 0.3s;
+        border-bottom: 4px solid #82ABA1;
+        display: flex;
+        flex-direction: column;
+      }
+      .mini-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        border-bottom-color: #454372;
+      }
+      .mini-card img {
+        width: 100%;
+        height: 90px; 
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: #ddd;
+      }
+      .mini-card h4 {
+        margin: 8px 0 0 0;
+        color: #454372;
+        font-size: 15px; 
+      }
+
+      /* Carousel for Forum Comments */
+      .carousel-container {
+        position: relative;
+        background: white;
+        padding: 15px 20px; 
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-bottom: 4px solid #454372;
+        margin-bottom: 15px;
+        min-height: 140px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .carousel-slide {
+        display: none;
+        animation: fadeIn 0.5s;
+      }
+      .carousel-slide.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .author-name {
+        font-size: 18px; 
+        font-weight: bold;
+        color: #454372;
+        margin: 0;
+      }
+      .author-title {
+        font-size: 13px; 
+        color: #82ABA1;
+        font-style: italic;
+        margin: 2px 0 10px 0;
+      }
+      .carousel-quote {
+        font-size: 16px; 
+        line-height: 1.3;
+        margin: 0;
+      }
+      
+      /* New Carousel Controls */
+      .carousel-controls {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+        margin-top: 10px;
+      }
+      .carousel-arrow {
+        background: none;
+        border: none;
+        color: #82ABA1;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.2s;
+        padding: 0;
+      }
+      .carousel-arrow:hover {
+        color: #454372;
+      }
+      .hidden-arrow {
+        visibility: hidden; /* Hides the arrow without breaking the layout */
+      }
+      
+      /* Call to Action Buttons */
+      .cta-button {
+        display: block;
+        text-align: center;
+        background-color: #82ABA1;
+        color: white;
+        padding: 12px 15px;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 16px;
+        transition: 0.3s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      .cta-button:hover {
+        background-color: #454372;
+        color: #FFE6A7;
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo"><a href="index.html">Admiral's Landing</a></div>
+      <nav>
+        <a href="REAL_story.html" target="_self">Farragut's Story</a>
+        <a href="REAL_events.html">Local Events</a>
+        <a href="REAL_other_activities.html">Other Activities</a>
+        <a href="REAL_community_forum.html">Community Forum</a>
+        <a href="REAL_references">References</a>
+      </nav>
+    </header>
+
+    <section class="hero-bg">
+      <div class="content-box">
+        <h1>Discover Farragut</h1>
+        <p style="font-size: 20px; font-style: italic; margin-bottom: 15px; color: #82ABA1;">Full of History, Fun, and Community</p>
+        <p>Farragut is a diverse town named after Admiral David Farragut, who was born in today's Campbell Station. With a population of over 26,000, Farragut offers many places to explore the beautiful nature of East Tennessee and engage in the local community.</p>
+        <div class="hero-buttons">
+          <a href="REAL_story.html">Read More on Farragut's Story</a>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <h2>Local Events</h2>
+        <p>Farragut offers a variety of activities to join for all ages, from children to adults. From special events to programs and classes, there are a plethora of experiences to make one feel like an Admiral!</p>
+        <div class="hero-buttons">
+          <a href="REAL_events.html">View All Local Events</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      
+      <div class="left-column">
+        
+        <h2 class="section-title">Spotlight Events</h2>
+        <div class="spotlight-cards">
+          <a href="REAL_events.html" class="card">
+            <h3>Farragut Art and Photography Show</h3>
+            <p>Showcase your creativity with us!</p>
+            <p class="event-date">April 18-19</p>
+          </a>
+
+          <a href="REAL_events.html" class="card">
+            <h3>Science Fair</h3>
+            <p>Where children can submit scientific projects of their own!</p>
+            <p class="event-date">May 22</p>
+          </a>
+
+          <a href="REAL_events.html" class="card">
+            <h3>Youth Dodgeball Tournament</h3>
+            <p>Dodge, duck, and compete against youths of all skill levels!</p>
+            <p class="event-date">June 16</p>
+          </a>
+        </div>
+
+        <br><br>
+
+        <h2 class="section-title">Community Forum</h2>
+        <p>See what others in the community have to say! Find new friends and events by commenting on the Admiral's Landing community forum.</p>
+        
+        <div class="carousel-container" id="forum-carousel">
+          
+          <div class="carousel-slide active">
+            <h4 class="author-name">Robert H.</h4>
+            <p class="author-title">Resident, 10+ years</p>
+            <p class="carousel-quote">"Just went to Anchor Park to fish! I never get tired of watching the sunset by the lake."</p>
+          </div>
+          
+          <div class="carousel-slide">
+            <h4 class="author-name">Sarah D.</h4>
+            <p class="author-title">Resident, 1 year</p>
+            <p class="carousel-quote">"The food at First Watch is so good! Their AM Superfoods bowl is always my go to for Sunday brunch."</p>
+          </div>
+          
+          <div class="carousel-slide">
+            <h4 class="author-name">Albert S.</h4>
+            <p class="author-title">Visitor</p>
+            <p class="carousel-quote">"Went to the Farragut Library today. Didn't expect there to be such a beautiful trail behind it!"</p>
+          </div>
+
+          <div class="carousel-controls">
+            <button class="carousel-arrow hidden-arrow" id="prev-arrow" onclick="changeSlide(-1)" title="Previous Comment">⬅</button>
+            <button class="carousel-arrow" id="next-arrow" onclick="changeSlide(1)" title="Next Comment">➔</button>
+          </div>
+        </div>
+
+        <a href="REAL_community_forum.html" class="cta-button">Have any other events or information to share? Click here to post on our Community Forum!</a>
+
+      </div>
+
+      <div class="right-column">
+        
+        <div class="image-frame">
+          <img src="The_town_of_Farragut_welcome.jpg" alt="Welcome to Farragut Tennessee Sign" class="farragut-img">
+        </div>
+        
+        <h2 class="section-title">Dining and Attractions</h2>
+        <p>As lifelong Farragut residents, we've picked up a couple of favorites here and there. You can find out recommendations for some of the best local dining and attractions in the area on the Dining and Attractions page.</p>
+        
+        <div class="mini-cards-container">
+          <a href="https://www.visitknoxville.com/listing/fruition-caf%C3%A9/2280/" target="_blank" class="mini-card">
+            <img src="https://via.placeholder.com/200x100?text=Fruition" alt="Fruition Cafe">
+            <h4>Fruition</h4>
+          </a>
+          
+          <a href="https://legacyparks.org/places/anchor-park/" target="_blank" class="mini-card">
+            <img src="https://via.placeholder.com/200x100?text=Anchor+Park" alt="Anchor Park">
+            <h4>Anchor Park</h4>
+          </a>
+          
+          <a href="https://www.knoxcountylibrary.org/about/hours-and-locations/farragut-branch-library" target="_blank" class="mini-card">
+            <img src="https://via.placeholder.com/200x100?text=Library" alt="Farragut Library">
+            <h4>Farragut Library</h4>
+          </a>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <script>
+      let currentSlideIndex = 0;
+      const carouselContainer = document.getElementById('forum-carousel');
+      
+      if(carouselContainer) {
+        const slides = carouselContainer.querySelectorAll('.carousel-slide');
+        const prevArrow = document.getElementById('prev-arrow');
+        const nextArrow = document.getElementById('next-arrow');
+
+        function changeSlide(direction) {
+          // Hide current slide
+          slides[currentSlideIndex].classList.remove('active');
+          
+          // Update Index
+          currentSlideIndex += direction;
+          
+          // Safety limits (just in case)
+          if (currentSlideIndex < 0) currentSlideIndex = 0;
+          if (currentSlideIndex >= slides.length) currentSlideIndex = slides.length - 1;
+
+          // Show new slide
+          slides[currentSlideIndex].classList.add('active');
+
+          // Check if we need to hide the left arrow
+          if (currentSlideIndex === 0) {
+            prevArrow.classList.add('hidden-arrow');
+          } else {
+            prevArrow.classList.remove('hidden-arrow');
+          }
+
+          // Check if we need to hide the right arrow
+          if (currentSlideIndex === slides.length - 1) {
+            nextArrow.classList.add('hidden-arrow');
+          } else {
+            nextArrow.classList.remove('hidden-arrow');
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
