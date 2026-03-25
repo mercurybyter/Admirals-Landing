@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Town of Farragut</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* --- AESTHETIC CSS UPDATES --- */
+      body {
+        font-family: "EB Garamond", sans-serif;
+        padding: 20px;
+        background-color: #fcfaf5; 
+        color: #432818; 
+        font-size: 18px; 
+        margin: 0;
+      }
+
+      /* Header / Navbar */
+      .navbar {
+        background: linear-gradient(to right, #82ABA1, #454372); 
+        color: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      }
+      .navbar .logo {
+        font-family: "Dancing Script", cursive;
+        font-size: 36px; 
+        color: #FFE6A7;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      }
+      .navbar .logo a {
+        color: #FFE6A7;
+        text-decoration: none;
+      }
+      .navbar nav a {
+        color: #FFE6A7;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+        transition: 0.2s;
+        font-size: 18px;
+      }
+      .navbar nav a:hover {
+        color: white; 
+      }
+
+      /* Background Wrappers */
+      .top-background {
+        /* Gradient lightens the background image */
+        background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), 
+                    url('https://images.pexels.com/photos/99562/texture-handwriting-sutterlin-vintage-99562.jpeg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        padding: 40px 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+
+      .bottom-background {
+        /* Gradient lightens the sailing ship image */
+        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                    url('https://images.pexels.com/photos/37859/sailing-ship-vessel-boat-sea-37859.jpeg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        padding: 40px 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+
+      /* Hero Title */
+      .hero {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .hero h1 {
+        font-size: 42px;
+        color: #454372;
+        margin: 0;
+      }
+
+      /* Flexbox for Founder */
+      .founder-flex {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        background: rgba(253, 250, 240, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 1000px;
+        margin: 0 auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      }
+      .founder-flex img {
+        width: 250px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        background-color: #ddd; /* Just in case image is missing */
+      }
+      .founder-text {
+        flex: 1;
+      }
+      .founder-text h2 {
+        color: #454372;
+        margin-top: 0;
+        font-size: 28px;
+      }
+
+      /* Layout Grids */
+      .features-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin: 0 auto 40px auto;
+        max-width: 1200px;
+      }
+      .section-title {
+        text-align: center;
+        color: #454372;
+        font-size: 36px;
+        margin-bottom: 30px;
+        width: 100%;
+      }
+
+      /* Base Card Styling */
+      .card {
+        background: white;
+        padding: 20px;
+        width: 260px;
+        border-radius: 12px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-bottom: 5px solid #82ABA1;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: #432818;
+      }
+      /* Hover effects */
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        border-bottom: 5px solid #454372;
+      }
+      .card h3 {
+        color: #454372;
+        margin-top: 0;
+        font-size: 22px;
+      }
+      .card p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+        flex-grow: 1; /* Pushes links/buttons to the bottom */
+      }
+
+      /* Bigger Image Cards */
+      .large-card {
+        width: 350px;
+      }
+      .card-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        /* Lightens the images */
+        filter: brightness(1.15); 
+      }
+
+      /* Card Buttons */
+      .link-btn {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #82ABA1;
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: bold;
+        transition: 0.3s;
+        font-size: 16px;
+      }
+      .link-btn:hover {
+        background-color: #454372;
+        color: #FFE6A7;
+      }
+
+    </style>
+  </head>
+  <body>
+    
+    <header class="navbar">
+      <div class="logo"><a href="index.html">Admiral's Landing</a></div>
+      <nav>
+        <a href="REAL_story.html" target="_self">Farragut's Story</a>
+        <a href="REAL_events.html">Local Events</a>
+        <a href="REAL_other_activities.html">Other Activities</a>
+        <a href="REAL_community_forum.html">Community Forum</a>
+        <a href="REAL_references.html">References</a>
+      </nav>
+    </header>
+
+    <div class="top-background">
+      <section class="hero">
+        <h1>The Town of Farragut</h1>
+      </section>
+
+      <section class="founder-flex">
+        <img src="Admiral_Farragut2.jpg" alt="David Glasgow Farragut" />
+        
+        <div class="founder-text">
+          <h2>The Founder of Farragut</h2>
+          <p>David Glasgow Farragut was a U.S. admiral born on July 5th, 1801. He is known for his many Union naval victories during the American Civil War, from 1861-1865. As a youth, Farragut was befriended and adopted by Captain David Porter, whom he served under aboard the frigate Essex during the War of 1812. Amongst his victories, Farragut had destroyed much of the Confederate river squadron and caused the surrender of many forts, including Fort Morgan. Farragut was especially well known for his line "Damn the torpedoes, full speed ahead!". He was made a full admiral in 1866, four years before his death in 1870.</p>
+        </div>
+      </section>
+    </div>
+
+    <section class="features-container">
+      <div class="card">
+        <h3>The Beginning</h3>
+        <p>Farragut was created as a town on January 16th, 1980. The first Board of Mayor and Aldermen were elected on April 1st of that same year.</p>
+      </div>
+      <div class="card">
+        <h3>Historical Architecture</h3>
+        <p>The Campbell Station Inn, created in the early 1800s, served as a resting place for many, from families and hunter to even President Andrew Jackson and Tennessee Governor John Sevier!</p>
+      </div>
+      <div class="card">
+        <h3>Civil War History</h3>
+        <p>The Battle of Campbell Station took place on November 16th, 1863. This battle was fought by Burnside's Union forces, who defeated Longstreet's Confederate forces. This important fight occurred on the land that currently surrounds Farragut's Town Hall. A Civil War Trails Historical Marker was dedicated in 2010 to these grounds to commemorate this event.</p>
+      </div>
+    </section>
+
+    <div class="bottom-background">
+      
+      <h2 class="section-title">Historical Landmarks</h2>
+      <section class="features-container">
+        
+        <div class="card">
+          <h3>Pleasant Forest Cemetery</h3>
+          <p>18th Century cemetery where many early colonists and historical figures are buried.</p>
+          <a href="https://www.pleasantforestcemetery.com/" class="link-btn" target="_blank">Cemetery Website</a>
+        </div>
+        
+        <a href="REAL_other_activities.html" class="card">
+          <h3>Founder's Park</h3>
+          <p>Scenic park next to the Farragut Library containing 11 signs on Farragut's history and people.</p>
+        </a>
+        
+        <a href="REAL_other_activities.html" class="card">
+          <h3>Farragut Museum</h3>
+          <p>Exhibit in the Farragut Town Hall with artifacts and photographs of Farragut and Concord.</p>
+        </a>
+        
+        <a href="REAL_other_activities.html" class="card">
+          <h3>Campbell Station Inn</h3>
+          <p>200 Year old Inn originally owned by Admiral David Farragut.</p>
+        </a>
+
+      </section>
+
+      <section class="features-container">
+        
+        <div class="card large-card">
+          <img src="https://images.pexels.com/photos/6841264/pexels-photo-6841264.jpeg" alt="Pleasant Forest Cemetery" class="card-img" />
+          <h3>Pleasant Forest Cemetery</h3>
+        </div>
+        
+        <div class="card large-card">
+          <img src="https://live.staticflickr.com/2365/2362484913_7ab72d800f_c.jpg" alt="Founder's Park" class="card-img" />
+          <h3>Founder's Park</h3>
+        </div>
+
+      </section>
+
+    </div>
+  </body>
+</html>
