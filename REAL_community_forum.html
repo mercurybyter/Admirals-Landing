@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admiral's Landing - Community Forum</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- AESTHETIC CSS UPDATES (From your theme) --- */
+        body {
+            font-family: "EB Garamond", sans-serif;
+            padding: 20px;
+            background-color: #fcfaf5; 
+            color: #432818; 
+            font-size: 18px; 
+            margin: 0;
+        }
+
+        /* Header / Navbar */
+        .navbar {
+            background: linear-gradient(to right, #82ABA1, #454372); 
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .navbar .logo {
+            font-family: "Dancing Script", cursive;
+            font-size: 36px; 
+            color: #FFE6A7;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .navbar .logo a {
+            color: #FFE6A7;
+            text-decoration: none;
+        }
+        .navbar nav a {
+            color: #FFE6A7;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: 0.2s;
+            font-size: 18px;
+        }
+        .navbar nav a:hover {
+            color: white; 
+        }
+
+        /* Hero Sections */
+        .hero {
+            background-color: #82ABA1; 
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .hero h1 { 
+            margin-top: 0; 
+            font-size: 36px;
+        }
+
+        /* --- COMMUNITY PAGE LAYOUT & FORUM (Preserved but styled to match aesthetic) --- */
+        * { box-sizing: border-box; }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            overflow: hidden; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        /* LEFT COLUMN: FORM */
+        .contact-left {
+            width: 55%;
+            float: left;
+            padding: 30px;
+            border-right: 1px solid #eee;
+        }
+        
+        .contact-left h2 {
+            color: #454372;
+            margin-top: 0;
+        }
+
+        .contact-inputs {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: "EB Garamond", sans-serif;
+            font-size: 16px;
+        }
+
+        fieldset {
+            border: 1px solid #eee;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+        }
+        fieldset legend {
+            color: #454372;
+            font-weight: bold;
+        }
+
+        .radio-group { font-size: 16px; line-height: 2; }
+
+        .submit-btn, .reset-form-btn {
+            background-color: #454372; /* Updated to theme color */
+            color: #FFE6A7;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px; /* Rounded to match other buttons */
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            font-family: "EB Garamond", sans-serif;
+            transition: 0.3s;
+        }
+        .submit-btn:hover, .reset-form-btn:hover {
+            background-color: #82ABA1;
+            color: #454372;
+        }
+
+        #thank-you-message {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            color: #454372;
+        }
+
+        /* RIGHT COLUMN: FORUM */
+        .forum-sidebar {
+            width: 45%;
+            float: left;
+            padding: 20px;
+            background-color: #fafafa;
+            min-height: 700px;
+        }
+        
+        .forum-sidebar h3 {
+            color: #454372;
+            margin-top: 0;
+            border-bottom: 2px solid #82ABA1;
+            padding-bottom: 8px;
+        }
+
+        #forum-name-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: "EB Garamond", sans-serif;
+            font-size: 16px;
+        }
+
+        #main-input {
+            width: 100%;
+            height: 90px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            resize: none;
+            font-family: "EB Garamond", sans-serif;
+            font-size: 16px;
+        }
+
+        #post-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #82ABA1; /* Updated to theme color */
+            color: white;
+            border: none;
+            border-radius: 20px; /* Rounded to match other buttons */
+            cursor: pointer;
+            font-weight: bold;
+            font-family: "EB Garamond", sans-serif;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        #post-btn:hover {
+            background-color: #454372;
+            color: #FFE6A7;
+        }
+
+        /* COMMENT CARDS */
+        .comment-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #82ABA1; /* Added theme aesthetic */
+        }
+
+        .name-tag {
+            font-weight: bold;
+            font-size: 16px;
+            color: #454372; /* Updated to theme color */
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .comment-text { font-size: 16px; color: #432818; margin-bottom: 12px; }
+
+        .action-btn {
+            background: #f0f2f5;
+            border: 1px solid #ddd;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 6px;
+            font-size: 14px;
+            font-family: "EB Garamond", sans-serif;
+            transition: 0.2s;
+        }
+        .action-btn:hover {
+            background-color: #e2e2e2;
+        }
+
+        .active-up { background-color: #d1e7dd; border-color: #0f5132; }
+        .active-down { background-color: #f8d7da; border-color: #842029; }
+
+        .reply-container {
+            margin-left: 15px;
+            border-left: 2px solid #82ABA1; /* Updated to theme color */
+            padding-left: 12px;
+            margin-top: 12px;
+        }
+
+        .mini-reply-form { margin-top: 10px; }
+        .mini-reply-form input { 
+            width: 65%; 
+            padding: 6px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+            font-family: "EB Garamond", sans-serif;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+      <div class="logo"><a href="index.html">Admiral's Landing</a></div>
+      <nav>
+        <a href="REAL_story.html" target="_self">Farragut's Story</a>
+        <a href="REAL_events.html">Local Events</a>
+        <a href="REAL_other_activities.html">Other Activities</a>
+        <a href="REAL_community_forum.html">Community Forum</a>
+        <a href="REAL_references">References</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Community Page</h1>
+      <p>
+        Engage with the community and fill out a form with your suggestions for our website here!
+      </p>
+    </section>
+
+    <div class="page-container clearfix">
+        
+        <div class="contact-left">
+            <form id="contactForm">
+                <h2>Contact Form</h2>
+                <hr style="border: 1px solid #82ABA1; width: 50px; margin: 10px 0 25px 0;">
+                
+                <input type="hidden" name="access_key" value="74df7695-6656-4bcc-8f8a-7da7f2828a15">
+                
+                <input type="text" name="first_name" placeholder="First Name" class="contact-inputs" required>
+                <input type="text" name="last_name" placeholder="Last Name" class="contact-inputs" required>
+                <input type="email" name="email" placeholder="Your email" class="contact-inputs" required>
+                
+                <fieldset>
+                    <legend>What is your message for?</legend>
+                    <div class="radio-group">
+                        <input type="radio" required name="category" id="c1" value="Dining"> <label for="c1">Dining</label><br>
+                        <input type="radio" required name="category" id="c2" value="Attractions"> <label for="c2">Attractions</label><br>
+                        <input type="radio" required name="category" id="c3" value="Local Events"> <label for="c3">Local Events</label><br>
+                        <input type="radio" required name="category" id="c4" value="Website Experience"> <label for="c4">Experience With Our Website</label><br>
+                        <input type="radio" required name="category" id="c5" value="Other"> <label for="c5">Other</label>
+                    </div>
+                </fieldset>
+
+                <textarea name="message" placeholder="Message" class="contact-inputs" style="height: 120px;" required></textarea>
+                
+                <button type="submit" class="submit-btn" id="submit-btn-text">Submit</button>
+            </form>
+
+            <div id="thank-you-message">
+                <h2>Thank you!</h2>
+                <p>Your message has been successfully recorded!</p>
+                <br>
+                <button class="reset-form-btn" onclick="resetFormOnly()">Go Back</button>
+            </div>
+        </div>
+
+        <div class="forum-sidebar">
+            <h3>Community Posts</h3>
+            <input type="text" id="forum-name-input" placeholder="Your Name">
+            <textarea id="main-input" placeholder="Comment"></textarea>
+            <button id="post-btn">Post Comment</button>
+
+            <div id="comments-list"></div>
+        </div>
+
+    </div>
+
+<script>
+    /* --- FORM LOGIC --- */
+    const contactForm = document.getElementById('contactForm');
+    const thankYou = document.getElementById('thank-you-message');
+    const submitBtn = document.getElementById('submit-btn-text');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+        submitBtn.innerText = "Sending...";
+
+        const formData = new FormData(contactForm);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: json
+        })
+        .then(async (response) => {
+            let res = await response.json();
+            if (response.status == 200) {
+                contactForm.style.display = "none";
+                thankYou.style.display = "block";
+            } else {
+                console.log(res);
+                alert("Submission Error: " + res.message);
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Check your internet or API key.");
+        })
+        .finally(() => {
+            submitBtn.innerText = "Submit";
+        });
+    });
+
+    function resetFormOnly() {
+        contactForm.reset();
+        contactForm.style.display = "block";
+        thankYou.style.display = "none";
+    }
+
+    /* --- FORUM LOGIC --- */
+    const nameInput = document.getElementById('forum-name-input');
+    const mainInput = document.getElementById('main-input');
+    const postBtn = document.getElementById('post-btn');
+    const commentsList = document.getElementById('comments-list');
+
+    function createComment(author, text, upCount = 0, downCount = 0, isDeletable = false) {
+        const card = document.createElement('div');
+        card.className = 'comment-card';
+        let upvoted = false; let downvoted = false;
+
+        card.innerHTML = `
+            <span class="name-tag">@${author}</span>
+            <div class="comment-text">${text}</div>
+            <div class="btn-row">
+                <button class="action-btn up-btn">👍 <span>${upCount}</span></button>
+                <button class="action-btn down-btn">👎 <span>${downCount}</span></button>
+                <button class="action-btn reply-btn">Reply</button>
+                ${isDeletable ? '<button class="action-btn delete-btn" style="color:red; border:none; background:none; cursor:pointer;">Delete</button>' : ''}
+            </div>
+            <div class="reply-container"></div>
+        `;
+
+        const upBtn = card.querySelector('.up-btn');
+        const downBtn = card.querySelector('.down-btn');
+        const upSpan = upBtn.querySelector('span');
+        const downSpan = downBtn.querySelector('span');
+
+        upBtn.onclick = () => {
+            if (!upvoted) {
+                upSpan.innerText = parseInt(upSpan.innerText) + 1;
+                upBtn.classList.add('active-up');
+                upvoted = true;
+                if (downvoted) downBtn.click(); 
+            } else {
+                upSpan.innerText = parseInt(upSpan.innerText) - 1;
+                upBtn.classList.remove('active-up');
+                upvoted = false;
+            }
+        };
+
+        downBtn.onclick = () => {
+            if (!downvoted) {
+                downSpan.innerText = parseInt(downSpan.innerText) + 1;
+                downBtn.classList.add('active-down');
+                downvoted = true;
+                if (upvoted) upBtn.click();
+            } else {
+                downSpan.innerText = parseInt(downSpan.innerText) - 1;
+                downBtn.classList.remove('active-down');
+                downvoted = false;
+            }
+        };
+
+        if (isDeletable) {
+            card.querySelector('.delete-btn').onclick = () => card.remove();
+        }
+
+        card.querySelector('.reply-btn').onclick = () => {
+            if (card.querySelector('.mini-reply-form')) return;
+            const rForm = document.createElement('div');
+            rForm.className = 'mini-reply-form';
+            rForm.innerHTML = `<input type="text" placeholder="Reply..."> <button class="action-btn">Send</button>`;
+            rForm.querySelector('button').onclick = () => {
+                const val = rForm.querySelector('input').value;
+                if (val.trim()) {
+                    card.querySelector('.reply-container').appendChild(createComment("Guest", val, 0, 0, true));
+                    rForm.remove();
+                }
+            };
+            card.insertBefore(rForm, card.querySelector('.reply-container'));
+        };
+
+        return card;
+    }
+
+    postBtn.onclick = () => {
+        const user = nameInput.value.trim() || "Anonymous";
+        const msg = mainInput.value.trim();
+        if (msg) {
+            commentsList.prepend(createComment(user, msg, 0, 0, true));
+            mainInput.value = "";
+            nameInput.value = "";
+        }
+    };
+
+    // FAKES
+    commentsList.appendChild(createComment("Robert H.", "Resident, 10+ years. Just went to Anchor Park to fish! I never get tired of watching the sunset by the lake.", 34, 0, false));
+    commentsList.appendChild(createComment("Sarah D.", "Resident, 1 year. The food at First Watch is so good! Their AM Superfoods bowl is always my go to for Sunday brunch.", 40, 6, false));
+    commentsList.appendChild(createComment("Albert S.", "Visitor. Went to the Farragut Library today. Didn't expect there to be such a beautiful trail behind it!", 57, 23, false));
+</script>
+
+</body>
+</html>
