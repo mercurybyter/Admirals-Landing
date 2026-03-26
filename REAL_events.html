@@ -80,7 +80,7 @@
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-        color: #432818; /* Darker text for readability on lighter background */
+        color: #432818; 
       }
       .hero-community-events h1, .hero-community-events p {
         color: #432818;
@@ -149,7 +149,7 @@
       /* FLIP CARDS for Governor's School */
       .flip-card {
         background-color: transparent;
-        width: 250px; /* Thinner */
+        width: 250px; 
         height: 350px;
         perspective: 1000px;
         margin-bottom: 20px;
@@ -163,7 +163,7 @@
         transform-style: preserve-3d;
         cursor: pointer;
       }
-      .flip-card.flipped .flip-card-inner { /* Use .flipped class for click */
+      .flip-card.flipped .flip-card-inner { 
         transform: rotateY(180deg);
       }
       .flip-card-front, .flip-card-back {
@@ -179,6 +179,7 @@
         align-items: center;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        box-sizing: border-box; /* CRITICAL FIX: Ensures padding doesn't cause overlap */
       }
       .flip-card-front {
         background-color: white;
@@ -216,6 +217,17 @@
       .hero-buttons a:hover {
         background-color: #82ABA1;
         color: #454372;
+      }
+
+      /* Responsive Adjustment for Phone */
+      @media (max-width: 600px) {
+        .flip-card, .card {
+          width: 100%;
+          max-width: 300px;
+        }
+        .features {
+            gap: 15px;
+        }
       }
 
     </style>
