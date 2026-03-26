@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admiral's Landing</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- UNIFIED AESTHETIC --- */
+        body {
+            font-family: "EB Garamond", sans-serif;
+            padding: 20px;
+            background-color: #fcfaf5; 
+            color: #432818; 
+            font-size: 18px; 
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Header / Navbar (Identical to index/forum) */
+        .navbar {
+            background: linear-gradient(to right, #82ABA1, #454372); 
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .navbar .logo {
+            font-family: "Dancing Script", cursive;
+            font-size: 36px; 
+            color: #FFE6A7;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .navbar .logo a {
+            color: #FFE6A7;
+            text-decoration: none;
+        }
+        .navbar nav a {
+            color: #FFE6A7;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: 0.2s;
+            font-size: 18px;
+        }
+        .navbar nav a:hover {
+            color: white; 
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #454372;
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #454372;
+            font-size: 28px;
+            border-bottom: 2px solid #82ABA1;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Source Code Button */
+        .center-btn-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .source-btn {
+            display: inline-block;
+            background-color: #454372;
+            color: #FFE6A7;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .source-btn:hover {
+            background-color: #82ABA1;
+            color: #454372;
+            transform: translateY(-2px);
+        }
+
+        /* Two Column PDF Section */
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .pdf-box {
+            text-align: center;
+        }
+        .pdf-box h3 {
+            color: #432818;
+            margin-bottom: 15px;
+        }
+        .pdf-placeholder {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+        }
+
+        /* Resource Content */
+        .resource-text {
+            background-color: #fdfaf0;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #82ABA1;
+            font-size: 17px;
+        }
+
+        /* Link Grids (Side-by-side style) */
+        .link-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 40px;
+        }
+        .link-grid a {
+            color: #82ABA1;
+            text-decoration: none;
+            font-size: 15px;
+            word-break: break-all;
+            transition: 0.2s;
+        }
+        .link-grid a:hover {
+            color: #454372;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .pdf-grid, .link-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+      <div class="logo"><a href="index.html">Admiral's Landing</a></div>
+      <nav>
+        <a href="REAL_story.html">Farragut's Story</a>
+        <a href="REAL_events.html">Local Events</a>
+        <a href="REAL_other_activities.html">Other Activities</a>
+        <a href="REAL_community_forum.html">Community Forum</a>
+        <a href="REAL_references.html">References</a>
+      </nav>
+    </header>
+
+    <div class="container">
+        <h1>References</h1>
+        
+        <div class="center-btn-container">
+            <a href="https://github.com/mercurybyter/Admirals-Landing" target="_blank" class="source-btn">Source Code</a>
+        </div>
+
+        <div class="pdf-grid">
+            <div class="pdf-box">
+                <h3>Copyright Checklist</h3>
+                <iframe src="copyright_worksheet.pdf" width="100%" height="400px" style="border:none; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"></iframe>
+            </div>
+            <div class="pdf-box">
+                <h3>Work Log</h3>
+                <iframe src="work_log.pdf" width="100%" height="400px" style="border:none; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"></iframe>
+            </div>
+        </div>
+
+        <h2 class="section-title">Resources</h2>
+        <div class="resource-text">
+            <p>This website utilizes Visual Studio Code for HTML, CSS, and JavaScript coding, GitHub for storing the files in a repository, and Google Maps for displaying maps of the locations for each place in Farragut. This website was not made with any pre-built templates.</p>
+            <p>Inspiration for our website came from <a href="https://www.knoxcountylibrary.org/community-resources" target="_blank">Knox County Library</a>, <a href="https://visitfarragut.org/" target="_blank">Visit Farragut</a>, and <a href="https://www.visitknoxville.com/" target="_blank">Visit Knoxville</a>. HTML Online Viewer was used for editing the HTML code before adding the files onto the GitHub repository.</p>
+        </div>
+
+        <h2 class="section-title">Image Links</h2>
+        <p>All images are either collected under Creative Commons License or otherwise considered Public Domain. Many of the images were sourced from <a href="https://www.pexels.com" target="_blank">Pexels</a>.</p>
+        
+        <div class="link-grid">
+            <a href="https://commons.wikimedia.org/wiki/File:Farragut-Town-Hall-tn1.jpg" target="_blank">Farragut Town Hall</a>
+            <a href="https://commons.wikimedia.org/wiki/File:Avery-russell-house-tn1.jpg" target="_blank">Avery Russell House</a>
+            <a href="https://itoldya420.getarchive.net/amp/media/portrait-of-rear-adm-david-g-farragut-officer-of-the-federal-navy-vice-adm-1abdaf" target="_blank">Admiral Farragut Portrait</a>
+            <a href="https://www.flickr.com/photos/vastateparksstaff/47849058231" target="_blank">State Park Nature</a>
+            <a href="https://images.pexels.com/photos/6841264/pexels-photo-6841264.jpeg" target="_blank">Community Gathering</a>
+            <a href="https://images.pexels.com/photos/15324791/pexels-photo-15324791.jpeg" target="_blank">Outdoor Park</a>
+            <a href="https://cdn.stocksnap.io/img-thumbs/960w/thai-food_FYXTJK8JBU.jpg" target="_blank">Thai Food</a>
+            <a href="https://i1.pickpik.com/photos/959/815/577/hamburger-fries-coleslaw-food-preview.jpg" target="_blank">Burger and Fries</a>
+            <a href="https://upload.wikimedia.org/wikipedia/commons/d/dc/Shoyu_Ramen.jpg" target="_blank">Shoyu Ramen</a>
+            <a href="https://freerangestock.com/sample/166078/takeaway-coffee-cup-with-artistic-design.jpg" target="_blank">Takeaway Coffee</a>
+            <a href="https://images.pexels.com/photos/8369538/pexels-photo-8369538.jpeg" target="_blank">Local Cafe</a>
+            <a href="https://images.pexels.com/photos/5419040/pexels-photo-5419040.jpeg" target="_blank">Nature Trail</a>
+            <a href="https://images.pexels.com/photos/3274104/pexels-photo-3274104.jpeg" target="_blank">Park Bench</a>
+            <a href="https://images.pexels.com/photos/2504980/pexels-photo-2504980.jpeg" target="_blank">Library Interior</a>
+            <a href="https://images.pexels.com/photos/1528361/pexels-photo-1528361.jpeg" target="_blank">Forest Path</a>
+            <a href="https://images.pexels.com/photos/99562/texture-handwriting-sutterlin-vintage-99562.jpeg" target="_blank">Vintage Handwriting</a>
+            <a href="https://images.pexels.com/photos/37859/sailing-ship-vessel-boat-sea-37859.jpeg" target="_blank">Sailing Ship</a>
+            <a href="https://images.pexels.com/photos/1202723/pexels-photo-1202723.jpeg" target="_blank">Sunset over Water</a>
+            <a href="https://images.pexels.com/photos/11363153/pexels-photo-11363153.jpeg" target="_blank">Historical Artifact</a>
+            <a href="https://images.pexels.com/photos/6539276/pexels-photo-6539276.jpeg" target="_blank">Museum Display</a>
+            <a href="https://images.pexels.com/photos/2362469/pexels-photo-2362469.jpeg" target="_blank">Local Event</a>
+            <a href="https://ygt-res.cloudinary.com/image/upload/c_fit,q_85,w_1024/v1625829166/hero-banner-images/Top_Golf_008_020121_xbinpq.jpg" target="_blank">Top Golf Knoxville</a>
+            <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8g7DeLDGXT2EfBqmtiHsE7h9EXnHbIc3Dnw&s" target="_blank">Farragut Plaza</a>
+            <a href="https://cdn4.picryl.com/photo/2018/01/01/resplendent-dogwood-tree-in-the-heights-above-ashland-oregon-d2b645-1024.jpg" target="_blank">Dogwood Tree</a>
+            <a href="https://images.pexels.com/photos/811440/pexels-photo-811440.jpeg" target="_blank">Community Park</a>
+            <a href="https://upload.wikimedia.org/wikipedia/commons/a/ad/The_town_of_Farragut%2C_Tennessee%2C_welcome_sign_02.jpg" target="_blank">Welcome Sign</a>
+            <a href="https://live.staticflickr.com/2365/2362484913_7ab72d800f_c.jpg" target="_blank">Historical Marker</a>
+            <a href="https://upload.wikimedia.org/wikipedia/commons/8/81/Strawberry_%26_Goat_Cheese_Panini_%288468176541%29.jpg" target="_blank">Panini Lunch</a>
+            <a href="https://images.pexels.com/photos/33583349/pexels-photo-33583349.png" target="_blank">Farragut Trail</a>
+            <a href="https://images.pexels.com/photos/36689791/pexels-photo-36689791.jpeg" target="_blank">Civic Center</a>
+            <a href="https://images.pexels.com/photos/17767038/pexels-photo-17767038.jpeg" target="_blank">Local Arts</a>
+            <a href="https://felixwong.com/gallery/images/k/knoxville-jul-2017-004.jpg" target="_blank">Farragut Scenery</a>
+            <a href="https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg" target="_blank">Restaurant Table</a>
+            <a href="https://fr.wikipedia.org/wiki/David_Farragut" target="_blank">David Farragut - Wikipedia</a>
+            <a href="https://upload.wikimedia.org/wikipedia/commons/9/99/Office_park_lake_and_sitting_area._-_geograph.org.uk_-_499296.jpg" target="_blank">Office Park Lake</a>
+            <a href="https://pxhere.com/en/photo/1081088" target="_blank">Public Library Shelves</a>
+        </div>
+
+        <h2 class="section-title">Research Links</h2>
+        <p>These are the links used to collect information for the community events and resources:</p>
+        <div class="link-grid">
+            <a href="https://visitfarragut.org/" target="_blank">Visit Farragut Official</a>
+            <a href="https://www.townoffarragut.org/" target="_blank">Town of Farragut Official</a>
+            <a href="https://www.townoffarragut.org/775/Special-Events" target="_blank">Farragut Special Events</a>
+            <a href="https://www.britannica.com/biography/David-Farragut" target="_blank">Britannica: David Farragut</a>
+            <a href="https://www.townoffarragut.org/251/History" target="_blank">Farragut History</a>
+            <a href="https://www.townoffarragut.org/784/Farragut-Parks" target="_blank">Farragut Parks & Rec</a>
+            <a href="https://visitfarragut.org/listing/campbell-station-inn/" target="_blank">Campbell Station Inn</a>
+            <a href="https://visitfarragut.org/listing/farragut-history-walk/" target="_blank">Farragut History Walk</a>
+            <a href="https://visitfarragut.org/listing/founders-park-at-campbell-station/" target="_blank">Founders Park</a>
+            <a href="https://willowcreekgolf.net/" target="_blank">Willow Creek Golf</a>
+            <a href="https://visitfarragut.org/listing/farragut-museum/" target="_blank">Farragut Museum</a>
+            <a href="https://coolsportstn.com/" target="_blank">Cool Sports TN</a>
+            <a href="https://www.visitknoxville.com/listing/farragut-plaza/2422/" target="_blank">Visit Knoxville: Plaza</a>
+            <a href="https://pleasantforestcemetery.com/" target="_blank">Pleasant Forest Cemetery</a>
+            <a href="https://topgolf.com/us/knoxville/" target="_blank">Top Golf Knoxville</a>
+            <a href="https://www.townoffarragut.org/744/Historic-Resources" target="_blank">Historic Resources</a>
+        </div>
+    </div>
+
+</body>
+</html>
