@@ -185,8 +185,10 @@
       /* Mini Cards for Dining and Attractions */
       .mini-cards-container {
         display: flex;
+        flex-direction: row; /* Ensure horizontal by default */
         gap: 12px;
         margin-top: 15px;
+        width: 100%;
       }
       .mini-card {
         background: white;
@@ -200,6 +202,7 @@
         border-bottom: 4px solid #82ABA1;
         display: flex;
         flex-direction: column;
+        min-width: 0; /* Keeps layout stable */
       }
       .mini-card:hover {
         transform: translateY(-4px);
@@ -218,6 +221,13 @@
         margin: 8px 0 0 0;
         color: #454372;
         font-size: 15px; 
+      }
+
+      /* Responsive fix for mini cards */
+      @media (max-width: 600px) {
+        .mini-cards-container {
+          flex-direction: column;
+        }
       }
 
       /* Carousel for Forum Comments */
@@ -263,7 +273,6 @@
         margin: 0;
       }
       
-      /* New Carousel Controls */
       .carousel-controls {
         display: flex;
         justify-content: flex-end;
@@ -283,10 +292,9 @@
         color: #454372;
       }
       .hidden-arrow {
-        visibility: hidden; /* Hides the arrow without breaking the layout */
+        visibility: hidden; 
       }
       
-      /* Call to Action Buttons */
       .cta-button {
         display: block;
         text-align: center;
@@ -401,14 +409,15 @@
       <div class="right-column">
         
         <div class="image-frame">
-          <img src="The_town_of_Farragut_welcome.jpg" alt="Welcome to Farragut Tennessee Sign" class="farragut-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/The_town_of_Farragut%2C_Tennessee%2C_welcome_sign_02.jpg" alt="Welcome to Farragut Tennessee Sign" class="farragut-img">
         </div>
         
         <h2 class="section-title">Dining and Attractions</h2>
-        <p>As lifelong Farragut residents, we've picked up a couple of favorites here and there. You can find out recommendations for some of the best local dining and attractions in the area on the Dining and Attractions page.</p>
-        
+        <p>As lifelong Farragut residents, we've picked up a couple of favorites here and there. You can find out recommendations for some of the best local dining and attractions in the area below.</p>
+     
         <div class="mini-cards-container">
-          <a href="https://upload.wikimedia.org/wikipedia/commons/8/81/Strawberry_%26_Goat_Cheese_Panini_%288468176541%29.jpg" alt="Fruition Cafe">
+          <a href="https://www.yelp.com/biz/fruition-cafe-knoxville" target="_blank" class="mini-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Strawberry_%26_Goat_Cheese_Panini_%288468176541%29.jpg" alt="Fruition">
             <h4>Fruition</h4>
           </a>
           
@@ -418,7 +427,7 @@
           </a>
           
           <a href="https://www.knoxcountylibrary.org/about/hours-and-locations/farragut-branch-library" target="_blank" class="mini-card">
-            <img src="https://pxhere.com/en/photo/1081088">
+            <img src="https://c.pxhere.com/photos/a0/ad/books_library_read_bookmarks_bookshelf-1081088.jpg!d">
             <h4>Farragut Library</h4>
           </a>
         </div>
@@ -436,28 +445,27 @@
         const prevArrow = document.getElementById('prev-arrow');
         const nextArrow = document.getElementById('next-arrow');
 
-        function changeSlide(direction) {
+        window.changeSlide = function(direction) {
           // Hide current slide
           slides[currentSlideIndex].classList.remove('active');
           
           // Update Index
           currentSlideIndex += direction;
           
-          // Safety limits (just in case)
+          // Safety limits
           if (currentSlideIndex < 0) currentSlideIndex = 0;
           if (currentSlideIndex >= slides.length) currentSlideIndex = slides.length - 1;
 
           // Show new slide
           slides[currentSlideIndex].classList.add('active');
 
-          // Check if we need to hide the left arrow
+          // Check if we need to hide arrows
           if (currentSlideIndex === 0) {
             prevArrow.classList.add('hidden-arrow');
           } else {
             prevArrow.classList.remove('hidden-arrow');
           }
 
-          // Check if we need to hide the right arrow
           if (currentSlideIndex === slides.length - 1) {
             nextArrow.classList.add('hidden-arrow');
           } else {
