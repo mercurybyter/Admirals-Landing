@@ -1,683 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <title>Admiral's Landing</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    
+
     <style>
-      /* --- AESTHETIC CSS UPDATES --- */
-      body {
-        font-family: "EB Garamond", sans-serif;
-        padding: 20px;
-        background-color: #fcfaf5; 
-        color: #432818; 
-        font-size: 18px; 
-        margin: 0;
-      }
+        /* --- AESTHETIC CSS UPDATES --- */
+        body {
+            font-family: "EB Garamond", sans-serif;
+            padding: 20px;
+            background-color: #fcfaf5;
+            color: #432818;
+            font-size: 18px;
+            margin: 0;
+            /* Performance tweak */
+            text-rendering: optimizeLegibility;
+        }
 
-      /* Header / Navbar */
-      .navbar {
-        background: linear-gradient(to right, #82ABA1, #454372); 
-        color: white;
-        padding: 20px 30px;
-        border-radius: 12px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      }
-      .navbar .logo {
-        font-family: "Dancing Script", cursive;
-        font-size: 36px; 
-        color: #FFE6A7;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-      }
-      .navbar a {
-        color: #FFE6A7;
-        text-decoration: none;
-        margin: 0 10px;
-        font-weight: bold;
-        transition: 0.2s;
-        font-size: 18px;
-      }
-      .navbar a:hover {
-        color: white; 
-      }
+        /* Header / Navbar */
+        .navbar {
+            background: linear-gradient(to right, #82ABA1, #454372);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
 
-      /* Hero Sections */
-      .hero {
-        background-color: #82ABA1; 
-        color: white;
-        padding: 40px;
-        border-radius: 12px;
-        text-align: center;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      }
-      .hero h1 { 
-        margin-top: 0; 
-        font-size: 36px;
-      }
+        .navbar .logo {
+            font-family: "Dancing Script", cursive;
+            font-size: 36px; /* CHANGE THIS NUMBER to match your other pages */
+            color: #FFE6A7;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            /* Standard logo practices */
+            font-weight: 700;
+            line-height: 1.2;
+        }
 
-      /* Background Wrapper for Attractions */
-      .attractions-container {
-        background: 
-            linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
-            url('https://images.pexels.com/photos/1528361/pexels-photo-1528361.jpeg');
-        background-color: #fcfaf5; 
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed; 
-        padding: 40px 20px;
-        border-radius: 12px;
-        margin-bottom: 30px;
-        text-align: center; 
-      }
+        .navbar .logo a {
+            color: #FFE6A7;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-      /* Search & Buttons */
-      input[type="text"] {
-        padding: 12px;
-        width: 300px;
-        margin-bottom: 15px;
-        border: 2px solid #82ABA1;
-        border-radius: 20px;
-        font-size: 16px;
-        font-family: "EB Garamond", sans-serif;
-      }
-      .buttons {
-        margin-bottom: 15px; /* Tighter spacing for buttons to cards */
-        display: flex;
-        justify-content: center; 
-        flex-wrap: wrap;
-        gap: 8px; 
-      }
-      button {
-        padding: 10px 20px;
-        cursor: pointer;
-        background-color: #82ABA1; 
-        color: white;
-        border: none;
-        border-radius: 20px; 
-        font-weight: 600;
-        font-family: "EB Garamond", sans-serif;
-        font-size: 16px;
-        transition: 0.3s;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      button:hover {
-        background-color: #454372; 
-        color: #FFE6A7;
-      }
+        .navbar nav a {
+            color: #FFE6A7;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: 0.2s;
+            font-size: 18px;
+        }
 
-      /* Cards */
-      .features {
-        display: flex;
-        justify-content: center; 
-        align-items: stretch;
-        gap: 12px; 
-        flex-wrap: wrap;
-        margin: 0 auto 15px auto;
-        max-width: 1200px; 
-      }
-      .card {
-        background: white;
-        padding: 15px;
-        width: 250px; 
-        min-height: 240px; 
-        border-radius: 12px;
-        text-align: center;
-        cursor: pointer;
-        transition: 0.3s;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        border-bottom: 5px solid #82ABA1;
-        display: flex;
-        flex-direction: column;
-      }
-      .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-        border-bottom: 5px solid #454372;
-      }
-      .card h3 {
-        margin: 15px 0 0 0;
-        font-size: 22px;
-        color: #454372;
-      }
-      .card h3 a {
-        text-decoration: none;
-        color: #454372;
-      }
-      /* Card Images */
-      .card-img {
-        width: 100%;
-        height: 160px; 
-        object-fit: cover;
-        border-radius: 8px;
-        background-color: #ddd; 
-      }
+        .navbar nav a:hover {
+            color: white;
+        }
 
-      .hidden {
-        display: none !important;
-      }
+        /* Hero Sections */
+        .hero {
+            background-color: #82ABA1;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-      /* Dining Container Setup */
-      .dining-container {
-        background: 
-            linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), 
-            url('https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg');
-        background-size: cover;       
-        background-position: center;  
-        background-repeat: no-repeat; 
-        background-attachment: fixed; 
-        text-align: center;
-        padding: 40px 20px;
-        border-radius: 12px;
-        margin-bottom: 30px;
-      }
+        .hero h1 {
+            margin-top: 0;
+            font-size: 36px;
+        }
 
-      /* Popups */
-      .popup {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.6);
-        z-index: 1000;
-        overflow-y: auto;
-      }
-      .popup-content {
-        background: white;
-        padding: 30px;
-        margin: 5% auto;
-        width: 90%;
-        max-width: 450px;
-        border-radius: 15px;
-        text-align: center;
-        position: relative;
-        border-top: 8px solid #454372;
-      }
-      .popup-content h2 {
-        color: #454372;
-        font-size: 28px;
-        margin-top: 0;
-      }
-      .popup-content p {
-        color: #432818;
-        font-size: 18px;
-        line-height: 1.5;
-        margin-bottom: 20px;
-      }
-      .popup-content iframe {
-        border-radius: 10px;
-        margin-bottom: 20px;
-      }
-      .popup-content a.website-link {
-        display: inline-block;
-        background-color: #454372;
-        color: white;
-        padding: 10px 25px;
-        border-radius: 20px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.3s;
-        font-size: 18px;
-      }
-      .popup-content a.website-link:hover {
-        background-color: #82ABA1;
-        color: #454372;
-      }
-      .close {
-        position: absolute;
-        right: 15px;
-        top: 10px;
-        font-size: 32px;
-        cursor: pointer;
-        color: #7C898B;
-      }
-      .close:hover {
-        color: #454372;
-      }
+        /* PERFORMANCE FIX: Changed 'fixed' to 'scroll' for background attachment */
+        .attractions-container {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+            url('https://images.pexels.com/photos/1528361/pexels-photo-1528361.jpeg?auto=compress&cs=tinysrgb&w=1260');
+            background-color: #fcfaf5;
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll; /* Changed from fixed for performance */
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Search & Buttons */
+        input[type="text"] {
+            padding: 12px;
+            width: 300px;
+            margin-bottom: 15px;
+            border: 2px solid #82ABA1;
+            border-radius: 20px;
+            font-size: 16px;
+            font-family: "EB Garamond", sans-serif;
+        }
+
+        .buttons {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #82ABA1;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            font-family: "EB Garamond", sans-serif;
+            font-size: 16px;
+            transition: 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #454372;
+            color: #FFE6A7;
+        }
+
+        /* Cards */
+        .features {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 0 auto 15px auto;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            width: 250px;
+            min-height: 240px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            /* Performance tweaks for smooth animation */
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+            will-change: transform;
+            
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid #82ABA1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-bottom: 5px solid #454372;
+        }
+
+        .card h3 {
+            margin: 15px 0 0 0;
+            font-size: 22px;
+            color: #454372;
+        }
+
+        .card h3 a {
+            text-decoration: none;
+            color: #454372;
+        }
+
+        /* Card Images */
+        .card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            background-color: #ddd;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* PERFORMANCE FIX: Changed 'fixed' to 'scroll' for background attachment */
+        .dining-container {
+            background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
+            url('https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=1260');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll; /* Changed from fixed for performance */
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        /* Popups */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 30px;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            border-top: 8px solid #454372;
+        }
+
+        .popup-content h2 {
+            color: #454372;
+            font-size: 28px;
+            margin-top: 0;
+        }
+
+        .popup-content p {
+            color: #432818;
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .popup-content iframe {
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .popup-content a.website-link {
+            display: inline-block;
+            background-color: #454372;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+
+        .popup-content a.website-link:hover {
+            background-color: #82ABA1;
+            color: #454372;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #7C898B;
+        }
+
+        .close:hover {
+            color: #454372;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <header class="navbar">
-      <div class="logo"><a href="index.html">Admiral's Landing</a></div>
-      <nav>
-        <a href="REAL_story.html" target="_self">Farragut's Story</a>
-        <a href="REAL_events.html">Local Events</a>
-        <a href="REAL_other_activities.html">Other Activities</a>
-        <a href="REAL_community_forum.html">Community Forum</a>
-        <a href="#">References</a>
-      </nav>
+        <div class="logo"><a href="index.html">Admiral's Landing</a></div>
+        <nav>
+            <a href="REAL_story.html" target="_self">Farragut's Story</a>
+            <a href="REAL_events.html">Local Events</a>
+            <a href="REAL_other_activities.html">Other Activities</a>
+            <a href="REAL_community_forum.html">Community Forum</a>
+            <a href="#">References</a>
+        </nav>
     </header>
 
     <section class="hero">
-      <h1>Attractions, Parks, and More!</h1>
-      <p>For those with other interests</p>
+        <h1>Attractions, Parks, and More!</h1>
+        <p>For those with other interests</p>
     </section>
 
     <div class="attractions-container">
-      <input type="text" id="searchBar" placeholder="Search Attractions...">
-      <div class="buttons">
-        <button onclick="setCategory('all')">All</button>
-        <button onclick="setCategory('historical')">Historical</button>
-        <button onclick="setCategory('parks')">Parks</button>
-        <button onclick="setCategory('sports_fun')">Sports and Fun</button>
-      </div>
+        <input type="text" id="searchBar" placeholder="Search Attractions...">
+        <div class="buttons">
+            <button onclick="setCategory('all')">All</button>
+            <button onclick="setCategory('historical')">Historical</button>
+            <button onclick="setCategory('parks')">Parks</button>
+            <button onclick="setCategory('sports_fun')">Sports and Fun</button>
+        </div>
 
-      <div class="card-lists" id="card-lists">
-        <p id="noResults" style="display:none; text-align: center; font-weight:bold; color: #432818; font-size: 20px;">
-          No Results Found. Try a different search.
-        </p>
+        <div class="card-lists" id="card-lists">
+            <p id="noResults" style="display:none; text-align: center; font-weight:bold; color: #432818; font-size: 20px;">
+                No Results Found. Try a different search.
+            </p>
 
-        <section class="features">
-          <div class="card" data-category="all parks" data-popup="popup1">
-            <img src="https://images.pexels.com/photos/5273885/pexels-photo-5273885.jpeg" alt="Anchor Park" class="card-img">
-            <h3>Anchor Park</h3>
-          </div>
-          <div class="card" data-category="all historical" data-popup="popup2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Avery-russell-house-tn1.jpg" alt="Campbell Station Inn" class="card-img">
-            <h3>Campbell Station Inn</h3>
-          </div>
-          <div class="card" data-category="all historical" data-popup="popup3">
-            <img src="https://images.pexels.com/photos/36658762/pexels-photo-36658762.jpeg" alt="History Walk" class="card-img">
-            <h3>Farragut History Walk</h3>
-          </div>
-          <div class="card" data-category="all parks sports_fun" data-popup="popup4">
-            <img src="https://live.staticflickr.com/65535/47849058231_431a5921e9_b.jpg" alt="Splash Pad" class="card-img">
-            <h3>McFee Splash Pad</h3>
-          </div>
-          <div class="card" data-category="all parks historical" data-popup="popup5">
-            <img src="https://live.staticflickr.com/2365/2362484913_7ab72d800f_c.jpg" alt="Founders Park" class="card-img">
-            <h3>Founders Park at Campbell Station</h3>
-          </div>
-          <div class="card" data-category="all sports_fun" data-popup="popup6">
-            <img src="https://images.pexels.com/photos/11363153/pexels-photo-11363153.jpeg" alt="Golf Club" class="card-img">
-            <h3>Willow Creek Golf Club</h3>
-          </div>
-          <div class="card" data-category="all historical" data-popup="popup7">
-             <img src="https://images.pexels.com/photos/2362469/pexels-photo-2362469.jpeg" alt="Farragut Museum" class="card-img">
-            <h3>Farragut Museum</h3>
-          </div>
-          <div class="card" data-category="all sports_fun" data-popup="popup8">
-             <img src="https://images.pexels.com/photos/6539276/pexels-photo-6539276.jpeg" alt="Cool Sports" class="card-img">
-            <h3>Cool Sports</h3>
-          </div>
-          <div class="card" data-category="all historical" data-popup="popup9">
-             <img src="https://cdn4.picryl.com/photo/2019/09/13/statue-of-union-admiral-david-farragut-in-farragut-square-washington-dc-f64ad8-1024.jpg" alt="Farragut Plaza" class="card-img">
-            <h3>Admiral Farragut Plaza</h3>
-          </div>
-          <div class="card" data-category="all historical" data-popup="popup10">
-             <img src="https://images.pexels.com/photos/6841264/pexels-photo-6841264.jpeg" alt="Cemetery" class="card-img">
-            <h3>Pleasant Forest Cemetery</h3>
-          </div>
-          <div class="card" data-category="all sports_fun" data-popup="popup11">
-             <img src="https://ygt-res.cloudinary.com/image/upload/c_fit,q_85,w_1024/v1625829166/hero-banner-images/Top_Golf_008_020121_xbinpq.jpg" alt="Topgolf" class="card-img">
-            <h3>Topgolf Knoxville</h3>
-          </div>
-          <div class="card" data-category="all historical" data-popup="popup12">
-             <img src="https://images.pexels.com/photos/36481059/pexels-photo-36481059.jpeg" alt="Civil War Trails" class="card-img">
-            <h3>Civil War Trails Historical Marker</h3>
-          </div>
-          <div class="card" data-category="all parks" data-popup="popup13">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Guindy_National_Park_47_Children_Play_Area.jpg" alt="Bob Leonard Park" class="card-img">
-            <h3><a href="">Mayor Bob Leonard Park</a></h3>
-          </div>
-    
-          <div class="card" data-category="all sports_fun" data-popup="popup15">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Peak_Vista_Community_Health_Center_-_Wahsatch%2C_Colorado_Springs.jpg" alt="Fort Sanders" class="card-img">
-            <h3><a href="">Fort Sanders</a></h3>
-          </div>
-        </section>
-      </div>
-    </div> <section class="hero" style="background-color: #454372;">
-      <h1 style="color: #FFE6A7;">Dining</h1>
-      <p style="color: white;">The best places to eat!</p>
+            <section class="features">
+                <div class="card" data-category="all parks" data-popup="popup1">
+                    <img src="https://images.pexels.com/photos/5273885/pexels-photo-5273885.jpeg?auto=compress&w=400" alt="Anchor Park" class="card-img">
+                    <h3>Anchor Park</h3>
+                </div>
+                <div class="card" data-category="all historical" data-popup="popup2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Avery-russell-house-tn1.jpg" alt="Campbell Station Inn" class="card-img">
+                    <h3>Campbell Station Inn</h3>
+                </div>
+                <div class="card" data-category="all historical" data-popup="popup3">
+                    <img src="https://images.pexels.com/photos/36658762/pexels-photo-36658762.jpeg?auto=compress&w=400" alt="History Walk" class="card-img">
+                    <h3>Farragut History Walk</h3>
+                </div>
+                <div class="card" data-category="all parks sports_fun" data-popup="popup4">
+                    <img src="https://live.staticflickr.com/65535/47849058231_431a5921e9_b.jpg" alt="Splash Pad" class="card-img">
+                    <h3>McFee Splash Pad</h3>
+                </div>
+                <div class="card" data-category="all parks historical" data-popup="popup5">
+                    <img src="https://live.staticflickr.com/2365/2362484913_7ab72d800f_c.jpg" alt="Founders Park" class="card-img">
+                    <h3>Founders Park at Campbell Station</h3>
+                </div>
+                <div class="card" data-category="all sports_fun" data-popup="popup6">
+                    <img src="https://images.pexels.com/photos/11363153/pexels-photo-11363153.jpeg?auto=compress&w=400" alt="Golf Club" class="card-img">
+                    <h3>Willow Creek Golf Club</h3>
+                </div>
+                <div class="card" data-category="all historical" data-popup="popup7">
+                    <img src="https://images.pexels.com/photos/2362469/pexels-photo-2362469.jpeg?auto=compress&w=400" alt="Farragut Museum" class="card-img">
+                    <h3>Farragut Museum</h3>
+                </div>
+                <div class="card" data-category="all sports_fun" data-popup="popup8">
+                    <img src="https://images.pexels.com/photos/6539276/pexels-photo-6539276.jpeg?auto=compress&w=400" alt="Cool Sports" class="card-img">
+                    <h3>Cool Sports</h3>
+                </div>
+                <div class="card" data-category="all historical" data-popup="popup9">
+                    <img src="https://cdn4.picryl.com/photo/2019/09/13/statue-of-union-admiral-david-farragut-in-farragut-square-washington-dc-f64ad8-1024.jpg" alt="Farragut Plaza" class="card-img">
+                    <h3>Admiral Farragut Plaza</h3>
+                </div>
+                <div class="card" data-category="all historical" data-popup="popup10">
+                    <img src="https://images.pexels.com/photos/6841264/pexels-photo-6841264.jpeg?auto=compress&w=400" alt="Cemetery" class="card-img">
+                    <h3>Pleasant Forest Cemetery</h3>
+                </div>
+                <div class="card" data-category="all sports_fun" data-popup="popup11">
+                    <img src="https://ygt-res.cloudinary.com/image/upload/c_fit,q_85,w_400/v1625829166/hero-banner-images/Top_Golf_008_020121_xbinpq.jpg" alt="Topgolf" class="card-img">
+                    <h3>Topgolf Knoxville</h3>
+                </div>
+                <div class="card" data-category="all historical" data-popup="popup12">
+                    <img src="https://images.pexels.com/photos/36481059/pexels-photo-36481059.jpeg?auto=compress&w=400" alt="Civil War Trails" class="card-img">
+                    <h3>Civil War Trails</h3>
+                </div>
+                <div class="card" data-category="all parks" data-popup="popup13">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Guindy_National_Park_47_Children_Play_Area.jpg" alt="Bob Leonard Park" class="card-img">
+                    <h3>Mayor Bob Leonard Park</h3>
+                </div>
+
+                <div class="card" data-category="all sports_fun" data-popup="popup15">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Peak_Vista_Community_Health_Center_-_Wahsatch%2C_Colorado_Springs.jpg" alt="Fort Sanders" class="card-img">
+                    <h3>Fort Sanders</h3>
+                </div>
+            </section>
+        </div>
+    </div>
+    <section class="hero" style="background-color: #454372;">
+        <h1 style="color: #FFE6A7;">Dining</h1>
+        <p style="color: white;">The best places to eat!</p>
     </section>
 
     <div class="dining-container">
-      <input type="text" id="searchBarDining" placeholder="Search Dining...">
-      <div class="buttons">
-        <button onclick="setCategoryDining('all')">All</button>
-        <button onclick="setCategoryDining('breakfast')">Breakfast</button>
-        <button onclick="setCategoryDining('lunch')">Lunch</button>
-        <button onclick="setCategoryDining('dinner')">Dinner</button>
-        <button onclick="setCategoryDining('snacks')">Snacks</button>
-      </div>
+        <input type="text" id="searchBarDining" placeholder="Search Dining...">
+        <div class="buttons">
+            <button onclick="setCategoryDining('all')">All</button>
+            <button onclick="setCategoryDining('breakfast')">Breakfast</button>
+            <button onclick="setCategoryDining('lunch')">Lunch</button>
+            <button onclick="setCategoryDining('dinner')">Dinner</button>
+            <button onclick="setCategoryDining('snacks')">Snacks</button>
+        </div>
 
-      <div class="card-lists" id="dining-lists">
-        <p id="noResultsDining" style="display:none; text-align: center; font-weight:bold; color: #432818; font-size: 20px;">
-          No Results Found. Try a different search.
-        </p>
+        <div class="card-lists" id="dining-lists">
+            <p id="noResultsDining" style="display:none; text-align: center; font-weight:bold; color: #432818; font-size: 20px;">
+                No Results Found. Try a different search.
+            </p>
 
-        <section class="features">
-          <div class="card" data-category="all lunch dinner" data-popup="popup16">
-            <img src="https://i1.pickpik.com/photos/959/815/577/hamburger-fries-coleslaw-food-preview.jpg" alt="35 North" class="card-img">
-            <h3>35 North</h3>
-          </div>
-          <div class="card" data-category="all snacks" data-popup="popup17">
-             <img src="https://images.pexels.com/photos/5419040/pexels-photo-5419040.jpeg" alt="Buttermilk Sky" class="card-img">
-            <h3>Buttermilk Sky Pie</h3>
-          </div>
-          <div class="card" data-category="all lunch dinner" data-popup="popup18">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Shoyu_Ramen.jpg" alt="Yamato Ramen" class="card-img">
-            <h3>Yamato Ramen House</h3>
-          </div>
-          <div class="card" data-category="all breakfast lunch dinner" data-popup="popup19">
-            <img src="https://felixwong.com/gallery/images/k/knoxville-jul-2017-004.jpg" alt="Tupelo Honey" class="card-img">
-            <h3>Tupelo Honey</h3>
-          </div>
-          <div class="card" data-category="all breakfast snacks" data-popup="popup20">
-             <img src="https://freerangestock.com/sample/166078/takeaway-coffee-cup-with-artistic-design.jpg" alt="Summer Moon" class="card-img">
-            <h3>Summer Moon Coffee</h3>
-          </div>
-          <div class="card" data-category="all lunch dinner" data-popup="popup21">
-             <img src="https://cdn.stocksnap.io/img-thumbs/960w/thai-food_FYXTJK8JBU.jpg" alt="Pin Thai" class="card-img">
-            <h3>Pin Thai</h3>
-          </div>
-          <div class="card" data-category="all breakfast snacks" data-popup="popup22">
-             <img src="https://images.pexels.com/photos/3274104/pexels-photo-3274104.jpeg
-" alt="Parlor Doughnuts" class="card-img">
-            <h3>Parlor Doughnuts</h3>
-          </div>
-          <div class="card" data-category="all breakfast lunch" data-popup="popup23">
-             <img src="https://images.pexels.com/photos/8369538/pexels-photo-8369538.jpeg" alt="First Watch" class="card-img">
-            <h3>First Watch</h3>
-          </div>
-          <div class="card" data-category="all breakfast lunch" data-popup="popup24">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Strawberry_%26_Goat_Cheese_Panini_%288468176541%29.jpg" alt="Fruition Cafe" class="card-img">
-            <h3>Fruition Cafe</h3>
-          </div>
-        </section>
-      </div>
-    </div> <div class="popup" id="popup1">
-      <div class="popup-content">
-        <span class="close">×</span>
-        <h2>Anchor Park</h2>
-        <p>A beautiful 15-acre park situated along the lake, featuring fishing areas, picnic pavilions, basketball courts, and scenic walking trails perfect for family outings.</p>
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Anchor%20Park%2C%20Turkey%20Creek%20Greenway%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://www.townoffarragut.org/186/Anchor-Park" target="_blank" class="website-link">Website</a>
-      </div>
+            <section class="features">
+                <div class="card" data-category="all lunch dinner" data-popup="popup16">
+                    <img src="https://i1.pickpik.com/photos/959/815/577/hamburger-fries-coleslaw-food-preview.jpg" alt="35 North" class="card-img">
+                    <h3>35 North</h3>
+                </div>
+                <div class="card" data-category="all snacks" data-popup="popup17">
+                    <img src="https://images.pexels.com/photos/5419040/pexels-photo-5419040.jpeg?auto=compress&w=400" alt="Buttermilk Sky" class="card-img">
+                    <h3>Buttermilk Sky Pie</h3>
+                </div>
+                <div class="card" data-category="all lunch dinner" data-popup="popup18">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Shoyu_Ramen.jpg" alt="Yamato Ramen" class="card-img">
+                    <h3>Yamato Ramen House</h3>
+                </div>
+                <div class="card" data-category="all breakfast lunch dinner" data-popup="popup19">
+                    <img src="https://felixwong.com/gallery/images/k/knoxville-jul-2017-004.jpg" alt="Tupelo Honey" class="card-img">
+                    <h3>Tupelo Honey</h3>
+                </div>
+                <div class="card" data-category="all breakfast snacks" data-popup="popup20">
+                    <img src="https://freerangestock.com/sample/166078/takeaway-coffee-cup-with-artistic-design.jpg" alt="Summer Moon" class="card-img">
+                    <h3>Summer Moon Coffee</h3>
+                </div>
+                <div class="card" data-category="all lunch dinner" data-popup="popup21">
+                    <img src="https://cdn.stocksnap.io/img-thumbs/960w/thai-food_FYXTJK8JBU.jpg" alt="Pin Thai" class="card-img">
+                    <h3>Pin Thai</h3>
+                </div>
+                <div class="card" data-category="all breakfast snacks" data-popup="popup22">
+                    <img src="https://images.pexels.com/photos/3274104/pexels-photo-3274104.jpeg?auto=compress&w=400" alt="Parlor Doughnuts" class="card-img">
+                    <h3>Parlor Doughnuts</h3>
+                </div>
+                <div class="card" data-category="all breakfast lunch" data-popup="popup23">
+                    <img src="https://images.pexels.com/photos/8369538/pexels-photo-8369538.jpeg?auto=compress&w=400" alt="First Watch" class="card-img">
+                    <h3>First Watch</h3>
+                </div>
+                <div class="card" data-category="all breakfast lunch" data-popup="popup24">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Strawberry_%26_Goat_Cheese_Panini_%288468176541%29.jpg" alt="Fruition Cafe" class="card-img">
+                    <h3>Fruition Cafe</h3>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="popup" id="popup1">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Anchor Park</h2>
+            <p>A beautiful 15-acre park situated along the lake, featuring fishing areas, picnic pavilions, basketball courts, and scenic walking trails perfect for family outings.</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/get-started5" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.townoffarragut.org/186/Anchor-Park" target="_blank" class="website-link">Website</a>
+        </div>
     </div>
 
     <div class="popup" id="popup2">
-      <div class="popup-content">
-        <span class="close">×</span>
-        <h2>Campbell Station Inn</h2>
-        <p>One of the oldest landmarks in Farragut, this historic inn serves as a gateway to local history and features beautiful surrounding grounds.</p>
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Campbell%20Station%20Inn%2C%20Kingston%20Pike%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://visitfarragut.org/listing/campbell-station-inn/" target="_blank" class="website-link">Website</a>
-      </div>
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Campbell Station Inn</h2>
+            <p>One of the oldest landmarks in Farragut, this historic inn serves as a gateway to local history and features beautiful surrounding grounds.</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/get-started6" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://visitfarragut.org/listing/campbell-station-inn/" target="_blank" class="website-link">Website</a>
+        </div>
     </div>
 
-    <div class="popup" id="popup3"><div class="popup-content"><span class="close">×</span>
-    <h2>Farragut History Walk</h2>
-    <p>Map shows trail start!</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=405%20N%20Campbell%20Station%20Rd%20Farragut%2C%20TN%2037934&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://visitfarragut.org/wp-content/themes/visitfarragut/assets/images/general/FarragutHistoryWalk.pdf" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup4"><div class="popup-content"><span class="close">×</span>
-    <h2>McFee Splash Pad</h2>
-    <p>Learn more about this park:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=McFee%20Park%2C%20McFee%20Rd%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://townoffarragut.org/785/McFee-Park-Splashpad" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup5"><div class="popup-content"><span class="close">×</span>
-    <h2>Founders Park</h2>
-    <p>Learn more about this park:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Founder's%20Park%20at%20Campbell%20Station%2C%20North%20Campbell%20Station%20Road%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://visitfarragut.org/listing/founders-park-at-campbell-station/" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup6"><div class="popup-content"><span class="close">×</span>
-    <h2>Willow Creek Golf Club</h2>
-    <p>Learn more about this golf course:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Willow%20Creek%20Golf%20Club%2C%20Kingston%20Pike%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://willowcreekgolf.net/" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup7">
-        <div class="popup-content"><span class="close">×</span>
-        <h2>Farragut Museum</h2>
-         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Farragut%20Museum%2C%20Municipal%20Center%20Drive%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p>Learn more about this museum:</p><a href="https://visitfarragut.org/museum/" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup8"><div class="popup-content"><span class="close">×</span>
-    <h2>Cool Sports</h2>
-    <p>Learn more about Cool Sports:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Cool%20Sports%20Home%20of%20the%20Icearium%2C%20South%20Watt%20Road%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://coolsportstn.com/" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup9"><div class="popup-content"><span class="close">×</span>
-    <h2>Admiral Farragut Plaza</h2>
-    <p>Learn more about this park:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=11408%20Municipal%20Center%20Drive%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://www.visitknoxville.com/listing/farragut-plaza/2422/" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup10"><div class="popup-content"><span class="close">×</span>
-    <h2>Pleasant Forest Cemetery</h2>
-    <p>Learn more about this cemetery:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Pleasant%20Forest%20Cemetery%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://www.pleasantforestcemetery.com/" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup11"><div class="popup-content"><span class="close">×</span>
-    <h2>Topgolf Knoxville</h2>
-    <p>Learn more about TopGolf:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Topgolf%20Knoxville%2C%20Outlet%20Drive%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://topgolf.com/us/" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup12"><div class="popup-content"><span class="close">×</span>
-    <h2>Civil War Trails</h2>
-    <p>Learn more about this marker:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Town%20Hall%20Greenway%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://www.townoffarragut.org/744/Historic-Resources" target="_blank" class="website-link">Website</a></div></div>
-    
-    <div class="popup" id="popup13"><div class="popup-content"><span class="close">×</span>
-    <h2>Mayor Bob Leonard Park</h2>
-    <p>Learn more about this park:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Mayor%20Bob%20Leonard%20Park%2C%20Watt%20Road%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://www.visitknoxville.com/listing/mayor-bob-leonard-park/979/" target="_blank" class="website-link">Website</a></div></div>
+    <div class="popup" id="popup3">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Farragut History Walk</h2>
+            <p>Map shows trail start!</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/get-started7" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://visitfarragut.org/wp-content/themes/visitfarragut/assets/images/general/FarragutHistoryWalk.pdf" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
 
-    
-    <div class="popup" id="popup15"><div class="popup-content"><span class="close">×</span>
-    <h2>Fort Sanders</h2>
-    <p>Learn more about this park:</p>
-     <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Covenant%20Health%2C%20Fort%20Sanders%20West%20Boulevard%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <a href="https://www.covenanthealth.com/covenant-health-west/" target="_blank" class="website-link">Website</a></div></div>
+    <div class="popup" id="popup4">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>McFee Splash Pad</h2>
+            <p>Learn more about this park:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/get-started8" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://townoffarragut.org/785/McFee-Park-Splashpad" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup5">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Founders Park</h2>
+            <p>Learn more about this park:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/get-started9" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://visitfarragut.org/listing/founders-park-at-campbell-station/" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup6">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Willow Creek Golf Club</h2>
+            <p>Learn more about this golf course:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map0" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://willowcreekgolf.net/" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup7">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Farragut Museum</h2>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map1" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <p>Learn more about this museum:</p>
+            <a href="https://visitfarragut.org/museum/" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup8">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Cool Sports</h2>
+            <p>Learn more about Cool Sports:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map2" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://coolsportstn.com/" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup9">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Admiral Farragut Plaza</h2>
+            <p>Learn more about this park:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map3" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.visitknoxville.com/listing/farragut-plaza/2422/" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup10">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Pleasant Forest Cemetery</h2>
+            <p>Learn more about this cemetery:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map4" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.pleasantforestcemetery.com/" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup11">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Topgolf Knoxville</h2>
+            <p>Learn more about TopGolf:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map5" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://topgolf.com/us/" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup12">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Civil War Trails</h2>
+            <p>Learn more about this marker:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map6" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.townoffarragut.org/744/Historic-Resources" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+    <div class="popup" id="popup13">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Mayor Bob Leonard Park</h2>
+            <p>Learn more about this park:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map7" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.visitknoxville.com/listing/mayor-bob-leonard-park/979/" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
+
+
+    <div class="popup" id="popup15">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Fort Sanders</h2>
+            <p>Learn more about this fitness and medicine center:</p>
+            <iframe src="https://developers.google.com/maps/documentation/embed/embedding-map8" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.covenanthealth.com/covenant-health-west/" target="_blank" class="website-link">Website</a>
+        </div>
+    </div>
 
     <div class="popup" id="popup16">
-      <div class="popup-content">
-        <span class="close">×</span>
-        <h2>35 North</h2>
-        <p>Farragut's favorite food truck park, bar, and community gathering space. Featuring local food trucks, craft beer, and a lively outdoor patio atmosphere.</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3232.196350361094!2d-84.1672332!3d35.8931497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c2c31e989eb27%3A0xc6829107ccfaeebe!2s35%20North!5e0!3m2!1sen!2sus!4v1711388000000!5m2!1sen!2sus" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://the35north.com/" target="_blank" class="website-link">Website</a>
-      </div>
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>35 North</h2>
+            <p>Farragut's favorite food truck park, bar, and community gathering space. Featuring local food trucks, craft beer, and a lively outdoor patio atmosphere.</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=35%20North%20Bar%20%26%20Grill%2C%20Kingston%20Pike%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://the35north.com/" target="_blank" class="website-link">Website</a>
+        </div>
     </div>
 
-    <div class="popup" id="popup17"><div class="popup-content"><span class="close">×</span><h2>Buttermilk Sky Pie</h2><p>Learn more:</p>
-      <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Buttermilk%20Sky%20Pie%20Shop%2C%20Parkside%20Drive%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap"
-            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-   
-    <a href="https://www.yamatoramenhouse.com/" class="website-link">Website</a></div></div>
-    <div class="popup" id="popup18"><div class="popup-content"><span class="close">×</span>
-    <h2>Yamato Ramen House</h2>
-    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Yamato%20Ramen%20House%2C%20Parkside%20Drive%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap"
-            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <p>Learn more:</p><a href="https://www.yamatoramenhouse.com/" class="website-link">Website</a></div></div>
-    
+    <div class="popup" id="popup17">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Buttermilk Sky Pie</h2>
+            <p>Local bakery with many varieties of pies and cookies for all sorts of guests and occasions. Learn more:</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Buttermilk%20Sky%20Pie%20Shop%2C%20Parkside%20Drive%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+            <a href="https://www.yamatoramenhouse.com/" class="website-link">Website</a>
+        </div>
+    </div>
+    <div class="popup" id="popup18">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Yamato Ramen House</h2>
+            <p>Local Japanese restaurant serving up ramen, hibachi dinners, Asian appetizers, and bubble tea. Learn more:</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Yamato%20Ramen%20House%2C%20Parkside%20Drive%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.yamatoramenhouse.com/" class="website-link">Website</a>
+        </div>
+    </div>
+
 
     <div class="popup" id="popup19">
-      <div class="popup-content">
-        <span class="close">×</span>
-        <h2>Tupelo Honey</h2>
-        <p>A revival of Southern food and traditions rooted in the Carolina Mountains, serving up scratch-made favorites for breakfast, lunch, and dinner.</p>
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Tupelo%20Honey%20Southern%20Kitchen%20%26%20Bar%2C%20Biddle%20Farms%20Boulevard%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://tupelohoneycafe.com/" target="_blank" class="website-link">Website</a>
-      </div>
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Tupelo Honey</h2>
+            <p>A revival of Southern food and traditions rooted in the Carolina Mountains, serving up scratch-made favorites for breakfast, lunch, and dinner.</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Tupelo%20Honey%20Southern%20Kitchen%20%26%20Bar%2C%20Biddle%20Farms%20Boulevard%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://tupelohoneycafe.com/" target="_blank" class="website-link">Website</a>
+        </div>
     </div>
 
     <div class="popup" id="popup20">
-    <div class="popup-content">
-        <span class="close">×</span>
-        <h2>Summer Moon Coffee</h2>
-        <p>Learn more:</p>
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Summer%20Moon%20Coffee%2C%20North%20Campbell%20Station%20Road%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://locations.summermooncoffee.com/locations/north-campbell-station-road-knoxville/" target="_blank" class="website-link">Website</a>
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Summer Moon Coffee</h2>
+            <p>Artisan coffee shop with specialty coffee, teas, pastries, and many options for drink customization. Learn more:</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Summer%20Moon%20Coffee%2C%20North%20Campbell%20Station%20Road%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://locations.summermooncoffee.com/locations/north-campbell-station-road-knoxville/" target="_blank" class="website-link">Website</a>
+        </div>
     </div>
-</div>
 
-<div class="popup" id="popup21">
-    <div class="popup-content">
-        <span class="close">×</span>
-        <h2>Pin Thai</h2>
-        <p>Learn more:</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3230.155533118552!2d-84.155704!3d35.881208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c2560e9034969%3A0x868b139031c2389a!2sPin%20Thai%20Cuisine!5e0!3m2!1sen!2sus!4v1711410000000" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://www.yelp.com/biz/pin-thai-farragut-2" target="_blank" class="website-link">Yelp</a>
+    <div class="popup" id="popup21">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Pin Thai</h2>
+            <p>Local Thai restaurant serving traditional dishes, drinks, and desserts from Thailand. Learn more:</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Pin%20Thai%20North%20Campbell%20Station%20Road%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.yelp.com/biz/pin-thai-farragut-2" target="_blank" class="website-link">Yelp</a>
+        </div>
     </div>
-</div>
 
-<div class="popup" id="popup22">
-    <div class="popup-content">
-        <span class="close">×</span>
-        <h2>Parlor Doughnuts</h2>
-        <p>Learn more:</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3230.1215442562233!2d-84.1539656!3d35.8820456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c2567207865c3%3A0x6b44749f993d567c!2sParlor%20Doughnuts!5e0!3m2!1sen!2sus!4v1711410000000" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://www.parlordoughnuts.com/shops/farragut-tn" target="_blank" class="website-link">Website</a>
+    <div class="popup" id="popup22">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Parlor Doughnuts</h2>
+            <p>Craft doughnut shop with sweet, savory, and seasonal doughnuts! Gluten-free options available. Learn more:</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Parlor%20Doughnuts%2C%20Biddle%20Farms%20Boulevard%2C%20Farragut%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.parlordoughnuts.com/shops/farragut-tn" target="_blank" class="website-link">Website</a>
+        </div>
     </div>
-</div>
 
-<div class="popup" id="popup23">
-    <div class="popup-content">
-        <span class="close">×</span>
-        <h2>First Watch</h2>
-        <p>Learn more:</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3230.3475727914845!2d-84.1685387!3d35.876475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c30f40d703197%3A0xe5a7116b3f6f3938!2sFirst%20Watch!5e0!3m2!1sen!2sus!4v1711410000000" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://firstwatch.com/locations/lovell-rd" target="_blank" class="website-link">Website</a>
+    <div class="popup" id="popup23">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>First Watch</h2>
+            <p>Healthy breakfast, brunch and lunch spot featuring a variety of seasonal food and drink items. Learn more:</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=First%20Watch%2C%20Lovell%20Road%2C%20Farragut%2C%20Knox%20County%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://firstwatch.com/locations/lovell-rd" target="_blank" class="website-link">Website</a>
+        </div>
     </div>
-</div>
 
-<div class="popup" id="popup24">
-    <div class="popup-content">
-        <span class="close">×</span>
-        <h2>Fruition Cafe</h2>
-        <p>Learn more:</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.831548123456!2d-84.1550!3d35.8890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c2579a3777777%3A0x7777777777777777!2sFruition%20Cafe!5e0!3m2!1sen!2sus!4v1711410000000" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <a href="https://www.yelp.com/biz/fruition-cafe-knoxville" target="_blank" class="website-link">Yelp</a>
+    <div class="popup" id="popup24">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>Fruition Cafe</h2>
+            <p>Handmade fresh paninis, smoothies, milkshakes, and snacks! Good pricing and atmosphere. Learn more:</p>
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Fruition%20Cafe%2C%20West%20End%20Avenue%2C%20Knoxville%2C%20TN%2C%20USA&maptype=roadmap" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://www.yelp.com/biz/fruition-cafe-knoxville" target="_blank" class="website-link">Yelp</a>
+        </div>
     </div>
-</div>
 
     <script>
-      const searchBar = document.getElementById("searchBar");
-      let currentCategory = "all";
+        const searchBar = document.getElementById("searchBar");
+        let currentCategory = "all";
 
-      function setCategory(category) {
-        currentCategory = category;
-        filterCards();
-      }
-      if(searchBar) {
-          searchBar.addEventListener("input", filterCards);
-      }
-
-      function filterCards() {
-        const searchText = searchBar.value.trim().toLowerCase();
-        let visibleCount = 0;
-
-        document.querySelectorAll("#card-lists .card").forEach(card => {
-          const title = card.innerText.toLowerCase();
-          const categories = card.dataset.category || "";
-
-          const matchesSearch = searchText === "" || title.includes(searchText);
-          const matchesCategory =
-            currentCategory === "all" || categories.includes(currentCategory);
-
-          if (matchesSearch && matchesCategory) {
-            card.style.display = "flex"; 
-            visibleCount++;
-          } else {
-            card.style.display = "none";
-          }
-        });
-        const noResults = document.getElementById("noResults");
-        const isFiltering = searchText !== "" || currentCategory !== "all";
-        if (visibleCount === 0 && isFiltering) {
-          noResults.style.display = "block";
-        } else {
-          noResults.style.display = "none";
+        function setCategory(category) {
+            currentCategory = category;
+            filterCards();
         }
-      }
-
-      const searchBarDining = document.getElementById("searchBarDining");
-      let currentCategoryDining = "all";
-
-      function setCategoryDining(category) {
-        currentCategoryDining = category;
-        filterCardsDining();
-      }
-      if(searchBarDining) {
-          searchBarDining.addEventListener("input", filterCardsDining);
-      }
-
-      function filterCardsDining() {
-        const searchText = searchBarDining.value.trim().toLowerCase();
-        let visibleCount = 0;
-
-        document.querySelectorAll("#dining-lists .card").forEach(card => {
-          const title = card.innerText.toLowerCase();
-          const categories = card.dataset.category || "";
-
-          const matchesSearch = searchText === "" || title.includes(searchText);
-          const matchesCategory =
-            currentCategoryDining === "all" || categories.includes(currentCategoryDining);
-
-          if (matchesSearch && matchesCategory) {
-            card.style.display = "flex"; 
-            visibleCount++;
-          } else {
-            card.style.display = "none";
-          }
-        });
-        const noResultsDining = document.getElementById("noResultsDining");
-        const isFiltering = searchText !== "" || currentCategoryDining !== "all";
-        if (visibleCount === 0 && isFiltering) {
-          noResultsDining.style.display = "block";
-        } else {
-          noResultsDining.style.display = "none";
+        if (searchBar) {
+            searchBar.addEventListener("input", filterCards);
         }
-      }
 
-      const cards = document.querySelectorAll(".card");
-      const popups = document.querySelectorAll(".popup");
-      const closes = document.querySelectorAll(".close");
+        function filterCards() {
+            const searchText = searchBar.value.trim().toLowerCase();
+            let visibleCount = 0;
 
-      cards.forEach(card => {
-        card.addEventListener("click", () => {
-          const popupId = card.getAttribute("data-popup");
-          if(popupId) {
-             document.getElementById(popupId).style.display = "block";
-          }
+            document.querySelectorAll("#card-lists .card").forEach(card => {
+                const title = card.innerText.toLowerCase();
+                const categories = card.dataset.category || "";
+
+                const matchesSearch = searchText === "" || title.includes(searchText);
+                const matchesCategory =
+                    currentCategory === "all" || categories.includes(currentCategory);
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            const noResults = document.getElementById("noResults");
+            const isFiltering = searchText !== "" || currentCategory !== "all";
+            if (visibleCount === 0 && isFiltering) {
+                noResults.style.display = "block";
+            } else {
+                noResults.style.display = "none";
+            }
+        }
+
+        const searchBarDining = document.getElementById("searchBarDining");
+        let currentCategoryDining = "all";
+
+        function setCategoryDining(category) {
+            currentCategoryDining = category;
+            filterCardsDining();
+        }
+        if (searchBarDining) {
+            searchBarDining.addEventListener("input", filterCardsDining);
+        }
+
+        function filterCardsDining() {
+            const searchText = searchBarDining.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            document.querySelectorAll("#dining-lists .card").forEach(card => {
+                const title = card.innerText.toLowerCase();
+                const categories = card.dataset.category || "";
+
+                const matchesSearch = searchText === "" || title.includes(searchText);
+                const matchesCategory =
+                    currentCategoryDining === "all" || categories.includes(currentCategoryDining);
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            const noResultsDining = document.getElementById("noResultsDining");
+            const isFiltering = searchText !== "" || currentCategoryDining !== "all";
+            if (visibleCount === 0 && isFiltering) {
+                noResultsDining.style.display = "block";
+            } else {
+                noResultsDining.style.display = "none";
+            }
+        }
+
+        const cards = document.querySelectorAll(".card");
+        const popups = document.querySelectorAll(".popup");
+        const closes = document.querySelectorAll(".close");
+
+        cards.forEach(card => {
+            card.addEventListener("click", () => {
+                const popupId = card.getAttribute("data-popup");
+                if (popupId) {
+                    document.getElementById(popupId).style.display = "block";
+                }
+            });
         });
-      });
 
-      closes.forEach(btn => {
-        btn.addEventListener("click", () => {
-          btn.closest(".popup").style.display = "none";
+        closes.forEach(btn => {
+            btn.addEventListener("click", () => {
+                btn.closest(".popup").style.display = "none";
+            });
         });
-      });
 
-      window.addEventListener("click", (e) => {
-        popups.forEach(popup => {
-          if (e.target === popup) {
-            popup.style.display = "none";
-          }
+        window.addEventListener("click", (e) => {
+            popups.forEach(popup => {
+                if (e.target === popup) {
+                    popup.style.display = "none";
+                }
+            });
         });
-      });
     </script>
-  </body>
+</body>
 </html>
