@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admiral's Landing - Community Events</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* --- AESTHETIC CSS UPDATES --- */
+      body {
+        font-family: "EB Garamond", sans-serif;
+        padding: 20px;
+        background-color: #fcfaf5; 
+        color: #432818; 
+        font-size: 18px; 
+        margin: 0;
+      }
+
+      /* Header / Navbar */
+      .navbar {
+        background: linear-gradient(to right, #82ABA1, #454372); 
+        color: white;
+        padding: 20px 30px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      }
+      .navbar .logo {
+        font-family: "Dancing Script", cursive;
+        font-size: 36px; 
+        color: #FFE6A7;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      }
+      .navbar .logo a {
+        color: #FFE6A7;
+        text-decoration: none;
+      }
+      .navbar nav a {
+        color: #FFE6A7;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+        transition: 0.2s;
+        font-size: 18px;
+      }
+      .navbar nav a:hover {
+        color: white; 
+      }
+
+      /* Hero Sections */
+      .hero {
+        background-color: #82ABA1; 
+        color: white;
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+      .hero h1 { 
+        margin: 0; 
+        font-size: 36px;
+      }
+      .hero p {
+        margin: 10px 0 0;
+        font-size: 20px;
+      }
+
+      /* Specific Hero Background */
+      .hero-community-events {
+        background: linear-gradient(rgba(252, 250, 245, 0.6), rgba(252, 250, 245, 0.6)), 
+                    url('https://images.pexels.com/photos/17767038/pexels-photo-17767038.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #432818; /* Darker text for readability on lighter background */
+      }
+      .hero-community-events h1, .hero-community-events p {
+        color: #432818;
+      }
+
+
+      /* Features/Card Grid */
+      .features {
+        display: flex;
+        justify-content: center; 
+        align-items: stretch;
+        gap: 20px; 
+        flex-wrap: wrap;
+        margin: 0 auto 30px auto;
+        max-width: 1200px; 
+      }
+
+      .section-label {
+        text-align: center;
+        font-size: 28px;
+        color: #454372;
+        margin-bottom: 20px;
+        font-weight: bold;
+        width: 100%;
+      }
+
+      /* Standard Cards */
+      .card {
+        background: white;
+        padding: 20px;
+        width: 300px; 
+        border-radius: 12px;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-bottom: 5px solid #82ABA1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        border-bottom: 5px solid #454372;
+      }
+      .card h3 {
+        margin: 0 0 10px 0;
+        font-size: 22px;
+        color: #454372;
+      }
+
+      /* STEM & Governor's School Background Section */
+      .stem-background {
+        background: linear-gradient(rgba(252, 250, 245, 0.8), rgba(252, 250, 245, 0.8)), 
+                    url('https://images.pexels.com/photos/36689791/pexels-photo-36689791.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 40px 20px;
+        border-radius: 12px;
+        margin-top: 40px;
+      }
+
+      /* FLIP CARDS for Governor's School */
+      .flip-card {
+        background-color: transparent;
+        width: 250px; /* Thinner */
+        height: 350px;
+        perspective: 1000px;
+        margin-bottom: 20px;
+      }
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+      }
+      .flip-card.flipped .flip-card-inner { /* Use .flipped class for click */
+        transform: rotateY(180deg);
+      }
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      .flip-card-front {
+        background-color: white;
+        color: #454372;
+        border-bottom: 5px solid #82ABA1;
+      }
+      .flip-card-back {
+        background-color: #454372;
+        color: #FFE6A7;
+        transform: rotateY(180deg);
+      }
+      .flip-card-back a {
+        color: #82ABA1;
+        font-weight: bold;
+        text-decoration: none;
+        margin-top: 10px;
+      }
+
+      /* Footer Button */
+      .hero-buttons {
+        text-align: center;
+        margin: 40px 0;
+      }
+      .hero-buttons a {
+        display: inline-block;
+        background-color: #454372;
+        color: #FFE6A7;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      }
+      .hero-buttons a:hover {
+        background-color: #82ABA1;
+        color: #454372;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <header class="navbar">
+      <div class="logo"><a href="index.html">Admiral's Landing</a></div>
+      <nav>
+        <a href="REAL_story.html">Farragut's Story</a>
+        <a href="REAL_events.html">Local Events</a>
+        <a href="REAL_other_activities.html">Other Activities</a>
+        <a href="REAL_community_forum.html">Community Forum</a>
+        <a href="REAL_references.html">References</a>
+      </nav>
+    </header>
+
+    <section class="hero hero-community-events">
+      <h1>Explore: Community Events!</h1>
+    </section>
+    
+    <div class="section-label">Our Spotlight Events</div>
+    <section class="features">
+      <a href="https://www.surveymonkey.com/r/NX68B8Q" target="_blank" class="card">
+        <h3>Farragut Art and Photography Show</h3>
+        <p>Showcase your creativity!</p>
+        <p><strong>April 18-19</strong></p>
+      </a>
+      <a href="https://townoffarragut.recdesk.com/Community/Program/Detail?programId=2564" target="_blank" class="card">
+        <h3>Science Fair</h3>
+        <p>Where children can submit scientific projects of their own!</p>
+        <p><strong>May 22</strong></p>
+      </a>
+      <a href="https://summerboss.com/camps/tn/farragut/town-of-farragut-youth-programs/youth-dodgeball-tournament" target="_blank" class="card">
+        <h3>Youth Dodgeball Tournament</h3>
+        <p>Dodge, duck, and compete against youths of all skill levels!</p>
+        <p><strong>June 16</strong></p>
+      </a>
+    </section>
+
+    <div class="section-label">Other Local Events</div>
+    <section class="features">
+      <a href="https://www.facebook.com/farragutmuseum" target="_blank" class="card">
+        <h3>History Hour</h3>
+        <p>Director Charlie Rhodarmer discusses the development of Sequoyah's Cherokee syllabary writing system.</p>
+        <p><strong>March 24th</strong></p>
+      </a>
+
+      <a href="https://visitfarragut.org/event/dogwood-trails-open-gardens-and-camera-sites/" target="_blank" class="card">
+        <h3>Dogwoods Art Trail</h3>
+        <p>Walk and view 80 miles of blooming plants and gardens following the pink arrows.</p>
+        <p><strong>April 1st-30th</strong></p>
+      </a>
+
+      <a href="https://runsignup.com/Race/TN/Farragut/FPSPTODolphinDash5K" target="_blank" class="card">
+        <h3>Dolphin Dash</h3>
+        <p>Farragut Primary School 5K walk/run to raise money for the school's PTO.</p>
+        <p><strong>April 25th</strong></p>
+      </a>
+
+      <a href="https://visitfarragut.org/event/chalk-the-plaza/" target="_blank" class="card">
+        <h3>Chalk The Plaza</h3>
+        <p>Food trucks, kid's zones, and talented artists making sidewalks their masterpieces.</p>
+        <p><strong>April 18-19</strong></p>
+      </a>
+
+      <a href="https://townoffarragut.recdesk.com/Community/Program/Detail?programId=2541" target="_blank" class="card">
+        <h3>Earth Day Adventure Challenge</h3>
+        <p>Complete 8 tasks at the Community Center to earn nature-themed prizes.</p>
+        <p><strong>April 18th-26th</strong></p>
+      </a>
+    </section>
+
+    <div class="stem-background">
+        <section class="hero" style="background: rgba(69, 67, 114, 0.85);">
+            <h1>STEM Opportunities</h1>
+            <p>Besides local events, there are many STEM related events for students in our community due to the closeness of ORNL and UTK!</p>
+        </section>
+
+        <section class="features">
+            <a href="https://mysagejourney.org/ornl" target="_blank" class="card">
+                <h3>SAGE</h3>
+                <p>Science Accelerating Growth & Engagement</p>
+                <p><em>Oak Ridge National Laboratory</em></p>
+            </a>
+
+            <a href="https://tickle.utk.edu/mse/materials-camp/" target="_blank" class="card">
+                <h3>Material Science Camp</h3>
+                <p>For material science and engineering capabilities</p>
+                <p><em>University of Tennessee, Knoxville</em></p>
+            </a>
+
+            <a href="https://education.ornl.gov/ngsi/" target="_blank" class="card">
+                <h3>NGSI</h3>
+                <p>Next Generation STEM Internship</p>
+                <p><em>Oak Ridge National Laboratory</em></p>
+            </a>
+
+            <a href="https://www.soinc.org" target="_blank" class="card">
+                <h3>Science Olympiad</h3>
+                <p>Knowledge and build events testing scientific skills.</p>
+                <p><em>Farragut High School</em></p>
+            </a>
+
+            <a href="https://sasef.utk.edu/" target="_blank" class="card">
+                <h3>SASEF</h3>
+                <p>Southern Appalachian Science and Engineering Fair</p>
+                <p><em>University of Tennessee, Knoxville</em></p>
+            </a>
+
+            <a href="https://tsaweb.org" target="_blank" class="card">
+                <h3>Engineering Club</h3>
+                <p>Where students are allowed to participate in and compete in TSA (Technology Student Association) amongst those from all over the state in various engineering and technological events.</p>
+                <p><em>Farragut High School</em></p>
+            </a>
+        </section>
+
+        <section class="hero" style="background: rgba(130, 171, 161, 0.85); color: #432818;">
+            <h1>Tennessee Governor's Schools</h1>
+            <p>Challenging programs for students in the arts, humanities, STEM and more</p>
+        </section>
+
+        <section class="features">
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h3>Governor's School for the Arts</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p>Offers sophomores and juniors high-quality experience in dance, theatre, music, and more over a three-week summer intensive.</p>
+                  <a href="https://gsfta.com" target="_blank">See more</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h3>Governor's School for Computational Physics</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p>Combines computer science, physics, and math to solve complex problems through research center travel.</p>
+                  <a href="https://www.apsu.edu/governors-school/" target="_blank">See more</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h3>Governor's School for Science and Engineering</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p>A competitive four-week program for advanced experience in specific fields of science and modern research.</p>
+                  <a href="https://gsse.utk.edu" target="_blank">See more</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h3>Governor's School for Humanities</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p>Sophomores and juniors celebrate humanity and society, discussing originality and shared community.</p>
+                  <a href="https://www.utm.edu/offices-and-services/governors-school-for-the-humanities/" target="_blank">See more</a>
+                </div>
+              </div>
+            </div>
+        </section>
+
+        <div class="hero-buttons">
+            <a href="https://www.tn.gov/education/districts/instruction/tdoe-governors-schools.html" target="_blank">For more information on Governor's Schools of Tennessee</a>
+        </div>
+    </div>
+
+    <div class="hero-buttons">
+        <a href="REAL_community_forum.html" class="secondary">Any other suggestions? Click here to send a form!</a>
+    </div>
+
+  </body>
+</html>
